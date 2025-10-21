@@ -32,7 +32,7 @@ function choosePrinciple(index) {
 
             document.getElementById("output").innerHTML =
                 `
-        <div class="principle-text">${data.principles[index].content}</div>
+        <p class="principle-text">${data.principles[index].content}</p>
         <hr>
         <button class="button" data-button-variant="primary" onclick=(getGuideline(${index}))>Get a guideline</button>
         `
@@ -44,24 +44,20 @@ function getGuideline(index) {
     fetch('/js/wcag.json')
         .then(response => response.json())
         .then(data => {
-            console.log(data.principles[index].guidelines);
             const guideline = getRandomItem(data.principles[index].guidelines);
-
             const successcriteria = guideline.successcriteria;
             let buttonlist = ``;
-
             for (const sc of successcriteria) {
                 buttonlist += `
                 <li>
-                    <button onclick="getCriteria('${sc.num}')"class="button" data-button-variant="positive" data-button-radius="hard" >${sc.num}</button>
+                    <button onclick="getCriteria('${sc.num}')"class="button" data-button-variant="positive" data-button-radius="hard" >${sc.handle}</button>
                 </li>
             `;
             }
-
             document.getElementById("output").innerHTML =
-                `
+        `
         <h2>Guideline</h2>
-        <div class="principle-text">${guideline.content}</div>
+        ${guideline.content}
         <ul class="cluster">
         ${buttonlist}
         </ul>
@@ -77,11 +73,53 @@ function getCriteria(num) {
 
             const sc = findObjectByValue(data, num);
 
-            console.log(sc);
+            let sufficientbuttonlist = ``;
+            let advisorybuttonlist = ``;
+            let failurebuttonlist = ``;
+            if (sc.techniques.sufficient) {
+                for (const sufficient of sc.techniques.sufficient) {
+                    sufficientbuttonlist += `
+                    <li>
+                        <button onclick="getSufficientTechniques('${num}')"; class="button" data-button-variant="ghost" data-button-radius="hard">${sufficient.title}</button>
+                    </li>
+                `;
+                }
+            }    
+           if (sc.techniques.advisory) {
+                for (const advisory of sc.techniques.advisory) {
+                    advisorybuttonlist += `
+                    <li>
+                        <button class="button" data-button-variant="ghost" data-ghost-button>${advisory.title}</button>
+                    </li>
+                `;
+                }
+            }
+           if (sc.techniques.failure) {
+            for (const failure of sc.techniques.failure) {
+                failurebuttonlist += `
+                <li>
+                    <button class="button" data-button-variant="negative" data-button-radius="hard" >${failure.title}</button>
+                </li>
+            `;
+            }
+           }
 
             document.getElementById("output").innerHTML =
             `
-            <div class="principle-text">${sc.content}</div>
+            <h2><a href="https://www.w3.org/WAI/WCAG22/quickref/#${sc.id}">Success Criterion</a></h2>
+            ${sc.content}
+            <h3>Sufficient Techniques - reliable ways to meet the success criteria</h3>
+            <ul class="cluster">
+             ${sufficientbuttonlist}
+            </ul>
+            <h3>Advisory Techniques</h3>
+            <ul class="cluster">
+             ${advisorybuttonlist ? advisorybuttonlist : 'None'}
+            </ul>
+            <h3>Failure Techniques</h3>
+            <ul class="cluster">
+            ${failurebuttonlist ? failurebuttonlist : 'None'}
+            </ul>
             `
         })
         .catch(error => console.error('Error loading data:', error));
