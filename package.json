@@ -11,6 +11,6 @@
   "author": "Morgan Murrah",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "python -m http.server 8080"
+    "start": "python3 -m http.server 8080"
   }
 }
