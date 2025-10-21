@@ -84,6 +84,175 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.button {
+  --button-bg: #342a21;
+  --button-color: #ffffff;
+  --button-hover-bg: #4b4b4a;
+  --button-hover-color: #ffffff;
+  --button-border-width: 3px;
+  --button-border-style: solid;
+  --button-border-color: var(--button-bg);
+  --button-radius: 0.5em;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--button-gap, 0.5em);
+  padding: var(--button-padding, 0.7em 1.2em);
+
+  background: var(--button-bg);
+  color: var(--button-color);
+
+  border-width: var(--button-border-width);
+  border-style: var(--button-border-style);
+  border-color: var(--button-border-color);
+  border-radius: var(--button-radius);
+
+  text-decoration: none;
+  font-weight: var(--button-font-weight, 700);
+  font-size: var(--button-font-size, 1em);
+  letter-spacing: 0.05ch;
+  font-family: sans-serif;
+  line-height: 1.1; /* Set or buttons will be different sizes (<a>/<button>) */
+
+  cursor: pointer;
+}
+
+.button svg {
+  height: var(--button-icon-size, 1.2cap);
+  width: auto;
+  flex: none;
+}
+
+/* Hover/focus/active */
+.button:hover {
+  background: var(--button-hover-bg);
+  color: var(--button-hover-color);
+}
+
+.button:focus {
+  outline-width: var(--button-outline-width, var(--button-border-width));
+  outline-style: var(--button-outline-style, var(--button-border-style));
+  outline-color: var(--button-outline-color, var(--button-border-color));
+  outline-offset: var(
+    --button-outline-offset,
+    calc(var(--button-border-width) * 2)
+  );
+}
+
+.button:active {
+  transform: scale(.99);
+}
+
+/* Variants */
+.button[data-button-variant="primary"] {
+  --button-bg: #f3de8a;
+  --button-color: #342a21;
+  --button-border-color: currentColor;
+  --button-hover-bg: #f1d979;
+  --button-hover-color: #342a21;
+}
+
+.button[data-button-variant="positive"] {
+  --button-bg: #2d936c;
+  --button-border-color: #107350;
+  --button-hover-bg: #359d75;
+}
+
+.button[data-button-variant="negative"] {
+  --button-bg: #b33c48;
+  --button-border-color: #a62f3d;
+  --button-hover-bg: #c24a56;
+}
+
+/* Ghost buttons */
+.button[data-ghost-button] {
+  --button-bg: transparent;
+  --button-border-color: currentColor;
+  --button-color: currentColor;
+}
+
+/* Radius variants */
+.button[data-button-radius="hard"] {
+  --button-radius: 0;
+}
+
+/* List styles */
+/*
+CLUSTER
+More info: https://every-layout.dev/layouts/cluster/
+A layout that lets you distribute items with consitent
+spacing, regardless of their size
+
+CUSTOM PROPERTIES AND CONFIGURATION
+ --gutter (var(--space-s-m)): This defines the space
+between each item.
+
+--cluster-horizontal-alignment (flex-start) How items
+should align horizontally. Can be any acceptable flexbox
+aligmnent value.
+
+--cluster-vertical-alignment How items should align
+vertically. Can be any acceptable flexbox alignment value.
+
+--cluster-direction (row) Sets the layout direction
+(horizontal or vertical). Accepts any flex-direction value
+(row, column, etc.).
+Default: row.
+
+--cluster-wrap (wrap) Controls item wrapping within the
+cluster. Accepts flex-wrap values (nowrap, wrap, wrap-reverse).
+Default: wrap.
+
+--cluster-row-gap (var(--gutter, var(--space-s-m))) Defines
+vertical spacing between rows.
+Default: --gutter or var(--space-s-m).
+
+--cluster-column-gap (var(--gutter, var(--space-s-m))) Defines
+horizontal spacing between columns.
+Default: --gutter or var(--space-s-m).
+*/
+
+.cluster {
+  display: flex;
+  flex-direction: var(--cluster-direction, row);
+  flex-wrap: var(--cluster-wrap, wrap);
+  column-gap: var(--cluster-column-gap, var(--gutter, var(--space-s-m)));
+  row-gap: var(--cluster-row-gap, var(--gutter, var(--space-s-m)));
+  justify-content: var(--cluster-horizontal-alignment, flex-start);
+  align-items: var(--cluster-vertical-alignment, center);
+}
+
+/* Demo styles */
+body {
+  --gutter: 1em;
+
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  background: #d7d9ce;
+  align-content: center;
+}
+
+.cluster {
+  list-style-type: none;
+  max-width: 80ch;
+  margin: 0 auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+  font-weight: normal;
+}
+
+.principle-text {
+  max-width: 60ch;
+}
+
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
