@@ -260,8 +260,8 @@ output {
 
 footer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding: 5px;
   background-color: #9abcde;
   color: white;
 }
