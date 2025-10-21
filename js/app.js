@@ -25,7 +25,7 @@ function findObjectByValue(obj, targetValue) {
 }
 
 function choosePrinciple(index) {
-    fetch('/js/wcag.json')
+    fetch('js/wcag.json')
         .then(response => response.json())
         .then(data => {
             console.log(data.principles[index]);
@@ -41,7 +41,7 @@ function choosePrinciple(index) {
 }
 
 function getGuideline(index) {
-    fetch('/js/wcag.json')
+    fetch('js/wcag.json')
         .then(response => response.json())
         .then(data => {
             const guideline = getRandomItem(data.principles[index].guidelines);
@@ -67,7 +67,7 @@ function getGuideline(index) {
 }
 
 function getCriteria(num) {
-    fetch('/js/wcag.json')
+    fetch('js/wcag.json')
         .then(response => response.json())
         .then(data => {
 
