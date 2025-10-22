@@ -34,8 +34,6 @@ function choosePrinciple(index) {
     fetch('js/wcag.json')
         .then(response => response.json())
         .then(data => {
-            console.log(data.principles[index]);
-
             document.getElementById("output").innerHTML = principlestate =
         `<h1>${data.principles[index].num} Principle</h1>
         <p class="principle-text">${data.principles[index].content}</p>
@@ -85,18 +83,30 @@ function getCriteria(num) {
             let failurebuttonlist = ``;
             if (sc.techniques.sufficient) {
                 for (const sufficient of sc.techniques.sufficient) {
+                    if (sufficient.techniques){
+                        sufficientbuttonlist += `
+                        <li>
+                            <h3>${sufficient.title}</h3>
+                        </li>`;
+                        for (const moretechniques of sufficient.techniques) {
+                        sufficientbuttonlist += `
+                        <li>
+                            <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${moretechniques.technology}/${moretechniques.id}" data-button-variant="ghost" data-button-radius="hard">${moretechniques.title}</a>
+                        </li>`;
+                        }
+                    } else {
                     sufficientbuttonlist += `
                     <li>
                         <button class="button" data-button-variant="ghost" data-button-radius="hard">${sufficient.title}</button>
-                    </li>
-                `;
+                    </li>`;
+                    }
                 }
             }    
            if (sc.techniques.advisory) {
                 for (const advisory of sc.techniques.advisory) {
                     advisorybuttonlist += `
                     <li>
-                        <button class="button" data-button-variant="ghost" data-ghost-button>${advisory.title}</button>
+                        <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${advisory.technology}/${advisory.id}" data-button-variant="ghost" data-ghost-button>${advisory.title}</a>
                     </li>
                 `;
                 }
@@ -105,7 +115,7 @@ function getCriteria(num) {
             for (const failure of sc.techniques.failure) {
                 failurebuttonlist += `
                 <li>
-                    <button class="button" data-button-variant="negative" data-button-radius="hard" >${failure.title}</button>
+                    <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${failure.technology}/${failure.id}" data-button-variant="negative" data-button-radius="hard" >${failure.title}</a>
                 </li>
             `;
             }
