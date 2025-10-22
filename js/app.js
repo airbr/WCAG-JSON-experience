@@ -35,7 +35,7 @@ function choosePrinciple(index) {
         .then(response => response.json())
         .then(data => {
             document.getElementById("output").innerHTML = principlestate =
-        `<h1>${data.principles[index].num} Principle</h1>
+        `<h1>${data.principles[index].num}. Principle</h1>
         <p class="principle-text">${data.principles[index].content}</p>
         <button class="button" data-button-variant="primary" onclick=(getGuideline(${index}))>Get a guideline</button>
         `
@@ -59,7 +59,7 @@ function getGuideline(index) {
             }
             document.getElementById("output").innerHTML = guidelinestate =
         `
-        <h2>${guideline.num} Guideline</h2>
+        <h2>${guideline.num}. Guideline</h2>
         ${guideline.content}
         <ul class="cluster">
         ${buttonlist}
@@ -97,7 +97,7 @@ function getCriteria(num) {
                     } else {
                     sufficientbuttonlist += `
                     <li>
-                        <button class="button" data-button-variant="ghost" data-button-radius="hard">${sufficient.title}</button>
+                        <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${sufficient.technology}/${sufficient.id}" data-button-variant="ghost" data-button-radius="hard">${sufficient.title}</a>
                     </li>`;
                     }
                 }
