@@ -36,7 +36,7 @@ function choosePrinciple(index) {
         .then(data => {
             document.getElementById("output").innerHTML = principlestate =
         `<h1>${data.principles[index].num}. Principle</h1>
-        <p class="principle-text">${data.principles[index].content}</p>
+        ${data.principles[index].content}
         <button class="button" data-button-variant="primary" onclick=(getGuideline(${index}))>Get a guideline</button>
         `
         })
@@ -94,9 +94,24 @@ function getCriteria(num) {
                             <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${moretechniques.technology}/${moretechniques.id}" data-button-variant="ghost" data-button-radius="hard">${moretechniques.title}</a>
                         </li>`;
                         }
-                    } else {
+                    } 
+                    if (sufficient.using){
+                        sufficientbuttonlist += `
+                        <li>
+                            <h3>${sufficient.title}</h3>
+                        </li>`;
+                        for (const using of sufficient.using) {
+                        sufficientbuttonlist += `
+                        <li>
+                            <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${using.technology}/${using.id}" data-button-variant="ghost" data-button-radius="hard">${using.title}</a>
+                        </li>`;
+                        
+                    }    
+
+                    } else {    
                     sufficientbuttonlist += `
                     <li>
+
                         <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${sufficient.technology}/${sufficient.id}" data-button-variant="ghost" data-button-radius="hard">${sufficient.title}</a>
                     </li>`;
                     }

@@ -266,9 +266,15 @@ footer {
   justify-content: center;
   background-color: #9abcde;
   color: white;
-  padding-inline: 20px;
+  padding: 20px;
+  margin: 0px;
 }
 
+footer > p, footer :visited {
+  color: black;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
 /* ==========================================================================
    Helper classes
    ========================================================================== */
