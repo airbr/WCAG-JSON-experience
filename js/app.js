@@ -127,15 +127,15 @@ function getCriteria(num) {
             <ul class="cluster">
             ${failurebuttonlist ? failurebuttonlist : 'None'}
             </ul>
-            <button class="button" data-ghost-button data-button-radius="hard" onclick="loadCrudeState(guidelinestate)" >Back</button>
+            <button class="button" data-ghost-button data-button-radius="hard" onclick="loadCrudeState(guidelinestate, true)" >Back</button>
             `
         })
         .catch(error => console.error('Error loading data:', error));
 }
 
-function loadCrudeState (state) {
+function loadCrudeState (state, guideline) {
 
- if (principlestate) {
+ if (guideline !== true) {
     let original = 
       `<ul class="cluster" role="list">
         <li>
