@@ -144,6 +144,7 @@ textarea {
 }
 
 /* Variants */
+
 .button[data-button-variant="primary"] {
   --button-bg: #f3de8a;
   --button-color: #342a21;
@@ -169,6 +170,7 @@ textarea {
   --button-bg: transparent;
   --button-border-color: currentColor;
   --button-color: currentColor;
+  margin-block: 1em;
 }
 
 /* Radius variants */

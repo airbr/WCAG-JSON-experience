@@ -1,5 +1,11 @@
 "use strict";
 
+
+// Really Messy Global State.
+var principlestate;
+var guidelinestate;
+var successcriteriastate;
+
 function getRandomItem(array) {
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex];
@@ -30,8 +36,8 @@ function choosePrinciple(index) {
         .then(data => {
             console.log(data.principles[index]);
 
-            document.getElementById("output").innerHTML =
-                `
+            document.getElementById("output").innerHTML = principlestate =
+        `<h1>${data.principles[index].num} Principle</h1>
         <p class="principle-text">${data.principles[index].content}</p>
         <button class="button" data-button-variant="primary" onclick=(getGuideline(${index}))>Get a guideline</button>
         `
@@ -53,13 +59,15 @@ function getGuideline(index) {
                 </li>
             `;
             }
-            document.getElementById("output").innerHTML =
+            document.getElementById("output").innerHTML = guidelinestate =
         `
-        <h2>Guideline</h2>
+        <h2>${guideline.num} Guideline</h2>
         ${guideline.content}
         <ul class="cluster">
         ${buttonlist}
         </ul>
+        <button class="button" data-ghost-button data-button-radius="hard" onclick="loadCrudeState(guidelinestate)" >Back</button>
+
         `
         })
         .catch(error => console.error('Error loading data:', error));
@@ -79,7 +87,7 @@ function getCriteria(num) {
                 for (const sufficient of sc.techniques.sufficient) {
                     sufficientbuttonlist += `
                     <li>
-                        <button onclick="getSufficientTechniques('${num}')"; class="button" data-button-variant="ghost" data-button-radius="hard">${sufficient.title}</button>
+                        <button class="button" data-button-variant="ghost" data-button-radius="hard">${sufficient.title}</button>
                     </li>
                 `;
                 }
@@ -103,9 +111,9 @@ function getCriteria(num) {
             }
            }
 
-            document.getElementById("output").innerHTML =
+            document.getElementById("output").innerHTML = successcriteriastate =
             `
-            <h2><a href="https://www.w3.org/WAI/WCAG22/quickref/#${sc.id}">Success Criterion</a></h2>
+            <h2> ${sc.num} <a href="https://www.w3.org/WAI/WCAG22/quickref/#${sc.id}">Success Criterion</a></h2>
             ${sc.content}
             <h3>Sufficient Techniques</h3>
             <ul class="cluster">
@@ -119,9 +127,32 @@ function getCriteria(num) {
             <ul class="cluster">
             ${failurebuttonlist ? failurebuttonlist : 'None'}
             </ul>
-            <br>
-            <br>
+            <button class="button" data-ghost-button data-button-radius="hard" onclick="loadCrudeState(guidelinestate)" >Back</button>
             `
         })
         .catch(error => console.error('Error loading data:', error));
+}
+
+function loadCrudeState (state) {
+
+ if (principlestate) {
+    let original = 
+      `<ul class="cluster" role="list">
+        <li>
+          <button href="#" onclick="choosePrinciple(0)" class="button">Perceivable</button>
+        </li>
+        <li>
+          <button href="#" onclick="choosePrinciple(1)" class="button">Operable</button>
+        </li>
+        <li>
+          <button href="#" onclick="choosePrinciple(2)" class="button">Understandable</button>
+        </li>
+        <li>
+          <button href="#" onclick="choosePrinciple(3)" class="button">Robust</button>
+        </li>
+      </ul>`
+    document.getElementById("output").innerHTML = original;
+ } else {
+    document.getElementById("output").innerHTML = state;
+ }  
 }
