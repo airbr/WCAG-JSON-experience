@@ -121,7 +121,6 @@ function getCriteria(num) {
             </ul>
             <br>
             <br>
-            <p><a href="/">Start Over</a><p>
             `
         })
         .catch(error => console.error('Error loading data:', error));
