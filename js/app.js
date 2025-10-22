@@ -33,7 +33,6 @@ function choosePrinciple(index) {
             document.getElementById("output").innerHTML =
                 `
         <p class="principle-text">${data.principles[index].content}</p>
-        <hr>
         <button class="button" data-button-variant="primary" onclick=(getGuideline(${index}))>Get a guideline</button>
         `
         })
@@ -108,7 +107,7 @@ function getCriteria(num) {
             `
             <h2><a href="https://www.w3.org/WAI/WCAG22/quickref/#${sc.id}">Success Criterion</a></h2>
             ${sc.content}
-            <h3>Sufficient Techniques - reliable ways to meet the success criteria</h3>
+            <h3>Sufficient Techniques</h3>
             <ul class="cluster">
              ${sufficientbuttonlist}
             </ul>
@@ -120,6 +119,9 @@ function getCriteria(num) {
             <ul class="cluster">
             ${failurebuttonlist ? failurebuttonlist : 'None'}
             </ul>
+            <br>
+            <br>
+            <p><a href="/">Start Over</a><p>
             `
         })
         .catch(error => console.error('Error loading data:', error));
