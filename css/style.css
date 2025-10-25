@@ -319,6 +319,7 @@ footer {
   color: white;
   padding: 20px;
   margin: 0px;
+  font-size: 0.7em;
 }
 
 footer > p, footer :visited {

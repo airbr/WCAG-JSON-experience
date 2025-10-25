@@ -52,6 +52,7 @@ function choosePrinciple(index) {
         <button class="button" data-button-variant="primary" onclick="(getGuideline(${index}, ${false}))">Get a random Guideline</button>
         ${guidebuttonlist}
         </ul>
+        <button class="button" data-ghost-button data-button-radius="hard" onclick="loadCrudeState(principlestate)" >Back</button>
         `
        
     })
