@@ -34,30 +34,50 @@ function choosePrinciple(index) {
     fetch('js/wcag.json')
         .then(response => response.json())
         .then(data => {
-            document.getElementById("output").innerHTML = principlestate =
-        `<h1>${data.principles[index].num}. Principle</h1>
+
+        const guidelines = data.principles[index].guidelines;
+        let guidebuttonlist = ``;
+        for (const guide of guidelines) {
+            guidebuttonlist += `
+            <li>
+                <button onclick="getGuideline(${index}, ${guide.num.toString()})" class="button" data-button-variant="positive" data-button-radius="hard" >${guide.handle}</button>
+            </li>
+        `;
+        }
+
+        document.getElementById("output").innerHTML = principlestate =
+        `<h1>${data.principles[index].num}. Principle: ${data.principles[index].handle}</h1>
         ${data.principles[index].content}
-        <button class="button" data-button-variant="primary" onclick=(getGuideline(${index}))>Get a guideline</button>
+        <ul class="cluster">
+        <button class="button" data-button-variant="primary" onclick="(getGuideline(${index}, ${false}))">Get a random Guideline</button>
+        ${guidebuttonlist}
+        </ul>
         `
-        })
+       
+    })
         .catch(error => console.error('Error loading data:', error));
 }
 
-function getGuideline(index) {
+function getGuideline(index, specific = false) {
     fetch('js/wcag.json')
         .then(response => response.json())
         .then(data => {
-            const guideline = getRandomItem(data.principles[index].guidelines);
-            const successcriteria = guideline.successcriteria;
-            let buttonlist = ``;
-            for (const sc of successcriteria) {
-                buttonlist += `
-                <li>
-                    <button onclick="getCriteria('${sc.num}')"class="button" data-button-variant="positive" data-button-radius="hard" >${sc.handle}</button>
-                </li>
-            `;
-            }
-            document.getElementById("output").innerHTML = guidelinestate =
+        let guideline;
+        if (specific != false) {
+        guideline = findObjectByValue(data, specific.toString());
+        } else {
+        guideline = getRandomItem(data.principles[index].guidelines);
+        }
+        const successcriteria = guideline.successcriteria;
+        let buttonlist = ``;
+        for (const sc of successcriteria) {
+            buttonlist += `
+            <li>
+                <button onclick="getCriteria('${sc.num}')"class="button" data-button-variant="positive" data-button-radius="hard" >${sc.handle}</button>
+            </li>
+        `;
+        }
+        document.getElementById("output").innerHTML = guidelinestate =
         `
         <h2>${guideline.num}. Guideline</h2>
         ${guideline.content}

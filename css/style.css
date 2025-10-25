@@ -56,10 +56,6 @@ p {
   font-size: var(--guideline-xp-0);
 }
 
-h1, h2, h3 {
-  margin-bottom: 0px;
-}
-
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -258,6 +254,7 @@ Default: --gutter or var(--space-s-m).
 */
 
 .cluster {
+  padding-left: 0px;
   display: flex;
   flex-direction: var(--cluster-direction, row);
   flex-wrap: var(--cluster-wrap, wrap);
@@ -300,7 +297,6 @@ main > #output {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 main > div > details {
@@ -340,7 +336,8 @@ nav {
     position: sticky; top: 0;
 }
 
-.title-head {
+nav > * {
+  margin: 4px;
   padding-inline: 20px;
   font-size: 1.1em;
 }
