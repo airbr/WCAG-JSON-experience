@@ -19,8 +19,15 @@
 </head>
 
 <body>
+  <nav>
+    <h2 class="title-head"><p>The Guideline Experience</p></h2>
+    <ul>
+      <li><a href="/">Home/Start Over</a></li>
+      <li><a href="github.com/airbr/WCAG-JSON-experience">GitHub</a></li>
+    </ul>
+  </nav>
   <main>
-    <output id="output">
+    <div id="output">
       <ul class="cluster" role="list">
         <li>
           <button href="#" onclick="choosePrinciple(0)" class="button">Perceivable</button>
@@ -35,11 +42,15 @@
           <button href="#" onclick="choosePrinciple(3)" class="button">Robust</button>
         </li>
       </ul>
-    </output>
+      <details>
+      <summary>What is this?</summary>
+      Activate one of the buttons above and go on a journey to learn about accessibility!
+      </details>
+    </div>
 </main>
 <footer>
 
-<p><a href="https://github.com/w3c/wcag/tree/main/11ty/json#readme">Content from WCAG divided into experiences but unaltered. Some randomness. Uses JSON of official project. All thanks to the contributors.</a></p>
+<p><a href="https://github.com/w3c/wcag/tree/main/11ty/json#readme">Content from unaltered JSON of official project. All thanks to the contributors.</a></p>
 <p><a href="https://www.w3.org/TR/WCAG22/">See WCAG for accurate reference and up-to date status.</a></p>
 <p>Website by <a href="https://github.com/airbr">Morgan, @airbr on GitHub</a></p>
 

@@ -1,18 +1,39 @@
-# WCAG JSON
+# WCAG-JSON — Interactive WCAG learning experience
 
-First thing - Embed a untouched/unchanged copy of the Guidelines into the project.
+WCAG-JSON is a small, dependency-free, browser-based project meant to encourage hands-on learning of the Web Content Accessibility Guidelines (WCAG). It uses the Official JSON unaltered as the primary data source.
 
-Second - Four principles. Accessible Buttons.
+The idea: embed the WCAG material as structured JSON and present it in an interactive, exploratory UI so people can learn guidelines, success criteria, failures, and techniques by trying, browsing, and experimenting.
 
-Three - Get a random guideline from the selected principle
+Key points
+- Intent: teach WCAG concepts through a simple interactive experience rather than a dense reference document.
+- Small and focused: the repo bundles a copy of the structured WCAG data (`js/wcag.json`) plus a tiny UI in `index.html` and `js/app.js`.
 
-Four - Choose between any available Sufficient, Advisory or Failure conditions
+Quick start (no dependencies)
 
-Five - Get and display a random technique from the grouping in full
+ Use a lightweight static server as you prefer e.g. `python3 -m http.server` from the project folder
 
-Six - Present a timeline/slider/ to go back to any step
+What you'll find
 
-Seven - Add-on, refine
+- `index.html` — the interactive UI shell.
+- `js/app.js` — core UI logic (reads `js/wcag.json` and renders interactive screens).
+- `js/wcag.json` — the structured WCAG content used by the UI.
+- `css/style.css` — presentation styles.
+- `img/` and `vendor/` — images and any small third-party assets used by the demo.
+
+Notes and disclaimers
+
+- This project is an educational, opinionated view of the WCAG content meant for learning and exploration. It is not a substitute for the official WCAG documentation at https://www.w3.org/TR/WCAG22/. The WCAG JSON in this Project is used aiming to follow their terms completely. 
+- It is easy to run and inspect, but also intentionally minimal — feel free to fork and extend.
 
 
+## Roadmap
 
+1. Add Header - "guideline-clicker"
+2. Deploy on Cloudflare
+3. "What is this?" Details/Summary element
+4. Explore Breadcrumb/Navigation styles.
+5. Clarify functionality-
+    * Choices
+      * Of Guidelines
+    * Random
+      * Of success criteria

@@ -17,6 +17,49 @@ html {
   line-height: 1.4;
 }
 
+/* @link https://utopia.fyi/type/calculator?c=375,16,1.2,1440,22,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  /* Step -2: 11.1111px → 14.08px */
+  --guideline-xp--2: clamp(0.6944rem, 0.6291rem + 0.2788vw, 0.88rem);
+  /* Step -1: 13.3333px → 17.6px */
+  --guideline-xp--1: clamp(0.8333rem, 0.7394rem + 0.4006vw, 1.1rem);
+  /* Step 0: 16px → 22px */
+  --guideline-xp-0: clamp(1rem, 0.868rem + 0.5634vw, 1.375rem);
+  /* Step 1: 19.2px → 27.5px */
+  --guideline-xp-1: clamp(1.2rem, 1.0173rem + 0.7793vw, 1.7188rem);
+  /* Step 2: 23.04px → 34.375px */
+  --guideline-xp-2: clamp(1.44rem, 1.1906rem + 1.0643vw, 2.1484rem);
+  /* Step 3: 27.648px → 42.9688px */
+  --guideline-xp-3: clamp(1.728rem, 1.3908rem + 1.4386vw, 2.6855rem);
+  /* Step 4: 33.1776px → 53.7109px */
+  --guideline-xp-4: clamp(2.0736rem, 1.6217rem + 1.928vw, 3.3569rem);
+  /* Step 5: 39.8131px → 67.1387px */
+  --guideline-xp-5: clamp(2.4883rem, 1.887rem + 2.5658vw, 4.1962rem);
+}
+
+h1 {
+  color: #005a9c;
+  font-size: var(--guideline-xp-2);
+}
+
+h2 {
+  color: #005a9c;
+  font-size: var(--guideline-xp-1);
+}
+
+h3 {
+  font-size: var(--guideline-xp-1);
+}
+
+p {
+  font-size: var(--guideline-xp-0);
+}
+
+h1, h2, h3 {
+  margin-bottom: 0px;
+}
+
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -241,15 +284,27 @@ body {
 }
 
 main {
+  min-height: 84vh;
+  font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+  font-weight: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main > #output {
+  padding-inline: 16px;
+  max-width: 70ch;
   margin: 0px auto 0px auto; 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 70ch;
-  min-height: 100vh;
-  font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
-  font-weight: normal;
+}
+
+main > div > details {
+  margin-block: 4em;
 }
 
 output {
@@ -275,6 +330,42 @@ footer > p, footer :visited {
   margin-top: 2px;
   margin-bottom: 2px;
 }
+
+nav {
+  color: #005a9c;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+    background: #b3d4fc;
+    position: sticky; top: 0;
+}
+
+.title-head {
+  padding-inline: 20px;
+  font-size: 1.1em;
+}
+
+details {
+  border: 1px solid #aaaaaa;
+  border-radius: 4px;
+  padding: 0.5em 0.5em 0;
+}
+
+summary {
+  font-weight: bold;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+}
+
+details[open] {
+  padding: 0.5em;
+}
+
+details[open] summary {
+  border-bottom: 1px solid #aaaaaa;
+  margin-bottom: 0.5em;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */
