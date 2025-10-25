@@ -79,7 +79,7 @@ function getGuideline(index, specific = false) {
         }
         document.getElementById("output").innerHTML = guidelinestate =
         `
-        <h2>${guideline.num}. Guideline</h2>
+        <h2>${guideline.num}. Guideline: ${guideline.handle}</h2>
         ${guideline.content}
         <ul class="cluster">
         ${buttonlist}

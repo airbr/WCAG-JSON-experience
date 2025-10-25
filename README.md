@@ -28,12 +28,12 @@ Notes and disclaimers
 
 ## Roadmap
 
-1. Add Header - "guideline-clicker"
-2. Deploy on Cloudflare
-3. "What is this?" Details/Summary element
-4. Explore Breadcrumb/Navigation styles.
+1. Add Header - Done
+2. Deploy on Cloudflare - Done 
+3. "What is this?" Details/Summary element - Done
+4. Explore Breadcrumb/Navigation styles. ?? TODO
 5. Clarify functionality-
     * Choices
-      * Of Guidelines
+      * Of Guidelines - Now random option, and choice available
     * Random
-      * Of success criteria
+      * Of success criteria - TODO
