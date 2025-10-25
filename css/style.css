@@ -333,11 +333,11 @@ nav {
   padding: 8px;
   display: flex;
   justify-content: center;
-    background: #b3d4fc;
-    position: sticky; top: 0;
+  background: #b3d4fc;
+  position: sticky; top: 0;
 }
 
-nav > * {
+nav h2 {
   margin: 4px;
   padding-inline: 20px;
   font-size: 1.1em;
