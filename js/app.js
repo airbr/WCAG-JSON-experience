@@ -191,7 +191,7 @@ function loadCrudeState (state, guideline) {
 
  if (guideline !== true) {
     let original = 
-      `<ul class="cluster" role="list">
+      `<ul class="cluster">
         <li>
           <button href="#" onclick="choosePrinciple(0)" class="button">Perceivable</button>
         </li>

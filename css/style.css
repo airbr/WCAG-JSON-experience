@@ -299,7 +299,7 @@ main > #output {
   justify-content: center;
 }
 
-main > output > details {
+main > section > details {
   margin-block: 4em;
 }
 
@@ -362,6 +362,11 @@ details[open] {
 details[open] summary {
   border-bottom: 1px solid #aaaaaa;
   margin-bottom: 0.5em;
+}
+
+.title-head {
+  margin: 0px;
+  padding-inline: 10px;
 }
 
 .header-icon {
