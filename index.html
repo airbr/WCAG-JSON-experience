@@ -6,10 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>An Interactive Web Accessibility Experience</title>
   <link rel="stylesheet" href="css/style.css">
-  <meta name="description" content="An interactive web accessibility journey - using WCAG JSON">
-  <meta property="og:title" content="An interactive WCAG learning journey">
+  <meta name="description" content="An Interactive Web Accessibility Experience using WCAG JSON">
+  <meta property="og:title" content="An interactive WCAG learning journey aiming to teach a little slice of the guidelines.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://guideline-experience.morgan-443.workers.dev/">
+  <meta property="og:url" content="https://guideline-journey.com/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.png">
@@ -20,33 +20,28 @@
 
 <body>
   <nav>
-    <a href="/"><h2 class="title-head">A Web Accessibility Experience - In Development</h2></a>
+    <a class="header-link" href="/"><img class="header-icon" src="icon.png" alt="Web Accessibility Icon"><h2 class="title-head">A Web Accessibility Experience</h2></a>
   </nav>
   <main>
     <output id="output">
-      <!-- <h2>Choose a random point:</h2>
-      <div>
-        <input type="range" id="num-range" name="num-range" min="0" max="4" />
-        <label for="num-range">num-range</label>
-      </div> -->
       <h1>Choose your journey:</h1>
       <ul class="cluster" role="list">
         <li>
-          <button href="#" onclick="choosePrinciple(0)" class="button">Perceivable</button>
+          <button onclick="choosePrinciple(0)" class="button">Perceivable</button>
         </li>
         <li>
-          <button href="#" onclick="choosePrinciple(1)" class="button">Operable</button>
+          <button onclick="choosePrinciple(1)" class="button">Operable</button>
         </li>
         <li>
-          <button href="#" onclick="choosePrinciple(2)" class="button">Understandable</button>
+          <button onclick="choosePrinciple(2)" class="button">Understandable</button>
         </li>
         <li>
-          <button href="#" onclick="choosePrinciple(3)" class="button">Robust</button>
+          <button onclick="choosePrinciple(3)" class="button">Robust</button>
         </li>
       </ul>
       <details>
       <summary>What is this?</summary>
-      Activate one of the buttons above and go on a journey to learn about accessibility! This project uses JSON data dynamically from the Web Content Accessibility Guidelines project. There may be small errors in rendering, we are working on those.
+      Activate one of the buttons above and go on a journey to learn about accessibility! This project uses JSON data dynamically from the Web Content Accessibility Guidelines project. There may be small errors in rendering, we are working on those. We are also working on improving the actual accessibility of this demo.
       </details>
     </output>
 </main>

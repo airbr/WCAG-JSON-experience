@@ -364,6 +364,16 @@ details[open] summary {
   margin-bottom: 0.5em;
 }
 
+.header-icon {
+  max-height: 44px;
+}
+
+.header-link {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

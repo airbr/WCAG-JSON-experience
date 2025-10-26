@@ -1,6 +1,6 @@
 {
-  "short_name": "",
-  "name": "",
+  "short_name": "Web Accessibility Journey",
+  "name": "Web Accessibility Journey with WCAG JSON",
   "icons": [{
     "src": "icon.png",
     "type": "image/png",
