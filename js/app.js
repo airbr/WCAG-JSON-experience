@@ -1,5 +1,14 @@
 "use strict";
 
+// If URL Param, do something
+// const url = new URL(window.location.href);
+// const params = new URLSearchParams(url.search);
+// if(params.has('num')) {
+//     console.log(params.get('num'));
+//     // If Principle 
+//     // If Guideline
+//     // If SC
+// }
 
 // Really Messy Global State.
 var principlestate;
@@ -53,8 +62,7 @@ function choosePrinciple(index) {
         ${guidebuttonlist}
         </ul>
         <button class="button" data-ghost-button data-button-radius="hard" onclick="loadCrudeState(principlestate)" >Back</button>
-        `
-       
+        `       
     })
         .catch(error => console.error('Error loading data:', error));
 }

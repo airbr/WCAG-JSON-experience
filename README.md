@@ -5,7 +5,7 @@ WCAG-JSON is a small, dependency-free, browser-based project meant to encourage 
 The idea: embed the WCAG material as structured JSON and present it in an interactive, exploratory UI so people can learn guidelines, success criteria, failures, and techniques by trying, browsing, and experimenting.
 
 Key points
-- Intent: teach WCAG concepts through a simple interactive experience rather than a dense reference document.
+- Intent: teach WCAG concepts through a simple interactive experience that is ideally a bit fun..
 - Small and focused: the repo bundles a copy of the structured WCAG data (`js/wcag.json`) plus a tiny UI in `index.html` and `js/app.js`.
 
 Quick start (no dependencies)
