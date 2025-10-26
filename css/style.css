@@ -299,16 +299,16 @@ main > #output {
   justify-content: center;
 }
 
-main > div > details {
+main > output > details {
   margin-block: 4em;
 }
 
-output {
+/* output {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+} */
 
 
 footer {

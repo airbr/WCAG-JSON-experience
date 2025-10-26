@@ -22,11 +22,13 @@ What you'll find
 
 Notes and disclaimers
 
-- This project is an educational, opinionated view of the WCAG content meant for learning and exploration. It is not a substitute for the official WCAG documentation at https://www.w3.org/TR/WCAG22/. The WCAG JSON in this Project is used aiming to follow their terms completely. 
+- This project is an educational view of the WCAG content meant for learning and exploration. It is not a substitute for the official WCAG documentation at https://www.w3.org/TR/WCAG22/. The WCAG JSON in this Project is used aiming to follow their terms completely. 
 - It is easy to run and inspect, but also intentionally minimal — feel free to fork and extend.
 
 
 ## Roadmap
+
+Main goal: Fix Undefined issues with some SC's
 
 1. Add Header - Done
 2. Deploy on Cloudflare - Done 
@@ -34,6 +36,6 @@ Notes and disclaimers
 4. Explore Breadcrumb/Navigation styles. ?? TODO
 5. Clarify functionality-
     * Choices
-      * Of Guidelines - Now random option, and choice available
+      * Of Guidelines - Now random option and choice available
     * Random
       * Of success criteria - TODO
