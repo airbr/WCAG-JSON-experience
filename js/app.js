@@ -1,14 +1,28 @@
 "use strict";
 
+window.addEventListener('popstate', function(event) {
+    // This will force a full page reload, ignoring cache
+    location.reload(true); 
+});
+
 // If URL Param, do something
-// const url = new URL(window.location.href);
-// const params = new URLSearchParams(url.search);
-// if(params.has('num')) {
-//     console.log(params.get('num'));
-//     // If Principle 
-//     // If Guideline
-//     // If SC
-// }
+const url = new URL(window.location.href);
+const params = new URLSearchParams(url.search);
+if(params.has('num')) {
+    const num = params.get('num').toString().length;
+    if (num == (1 || 2) )  {
+        console.log('is Principle');
+        choosePrinciple(params.get('num'));
+    } 
+    if (num == (3 || 4)) {
+        console.log('is Guideline');
+        getGuideline(params.get('num'), params.get('num').toString());
+    } 
+    if (num === 5) {
+        console.log('is SC');
+        getCriteria(params.get('num').toString());
+    }
+}
 
 // Really Messy Global State.
 var principlestate;
@@ -61,10 +75,12 @@ function choosePrinciple(index) {
         <button class="button" data-button-variant="primary" onclick="(getGuideline(${index}, ${false}))">Get a random Guideline</button>
         ${guidebuttonlist}
         </ul>
-        <button class="button" data-ghost-button data-button-radius="hard" onclick="loadCrudeState(principlestate)" >Back</button>
-        `       
+        `
+        const url = new URL(location);
+        url.searchParams.set('num', index);
+        history.pushState({}, "", url);
     })
-        .catch(error => console.error('Error loading data:', error));
+    .catch(error => console.error('Error loading data:', error))
 }
 
 function getGuideline(index, specific = false) {
@@ -93,9 +109,10 @@ function getGuideline(index, specific = false) {
         <ul class="cluster">
         ${buttonlist}
         </ul>
-        <button class="button" data-ghost-button data-button-radius="hard" onclick="loadCrudeState(guidelinestate)" >Back</button>
-
         `
+        const url = new URL(location);
+        url.searchParams.set('num', guideline.num);
+        history.pushState({}, "", url);        
         })
         .catch(error => console.error('Error loading data:', error));
 }
@@ -181,32 +198,10 @@ function getCriteria(num) {
             <ul class="cluster">
             ${failurebuttonlist ? failurebuttonlist : 'None'}
             </ul>
-            <button class="button" data-ghost-button data-button-radius="hard" onclick="loadCrudeState(guidelinestate, true)" >Back</button>
             `
+            const url = new URL(location);
+            url.searchParams.set('num', sc.num);
+            history.pushState({}, "", url);          
         })
         .catch(error => console.error('Error loading data:', error));
-}
-
-function loadCrudeState (state, guideline) {
-
- if (guideline !== true) {
-    let original = 
-      `<ul class="cluster">
-        <li>
-          <button href="#" onclick="choosePrinciple(0)" class="button">Perceivable</button>
-        </li>
-        <li>
-          <button href="#" onclick="choosePrinciple(1)" class="button">Operable</button>
-        </li>
-        <li>
-          <button href="#" onclick="choosePrinciple(2)" class="button">Understandable</button>
-        </li>
-        <li>
-          <button href="#" onclick="choosePrinciple(3)" class="button">Robust</button>
-        </li>
-      </ul>`
-    document.getElementById("output").innerHTML = original;
- } else {
-    document.getElementById("output").innerHTML = state;
- }  
 }
