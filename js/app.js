@@ -19,7 +19,7 @@ if (params.has('num')) {
         console.log('is Guideline');
         getGuideline(params.get('num'), params.get('num').toString());
     }
-    if (num === 5) {
+    if (num === 5 || 6) {
         console.log('is SC');
         getCriteria(params.get('num').toString());
     }
@@ -147,14 +147,17 @@ function getCriteria(num) {
                             `;
                         } else {
                             for (const moretechniques of sufficient.techniques) {
+                                if (moretechniques.title && !moretechniques.technology && !moretechniques.id) {
+                                  // Redudant
+                                } else {
                                 sufficientbuttonlist += `
-                            <li>
-                                <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${moretechniques.technology}/${moretechniques.id}" data-button-variant="ghost" data-button-radius="hard">${moretechniques.title}</a>
-                            </li>`;
+                                <li>
+                                    <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${moretechniques.technology}/${moretechniques.id}" data-button-variant="ghost" data-button-radius="hard">${moretechniques.title}</a>
+                                </li>`;
+                                }
                             }
                         }
                         if (sufficient.groups) {
-                            console.log(sufficient);
                             for (const group of sufficient.groups) {
                                 sufficientbuttonlist += `
                             <li>
