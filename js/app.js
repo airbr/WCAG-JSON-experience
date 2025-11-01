@@ -1,23 +1,24 @@
 "use strict";
 
-window.addEventListener('popstate', function(event) {
+window.addEventListener('popstate', function (event) {
     // This will force a full page reload, ignoring cache
-    location.reload(true); 
+    // Temporary Solution TODO: Upgrade
+    location.reload(true);
 });
 
 // If URL Param, do something
 const url = new URL(window.location.href);
 const params = new URLSearchParams(url.search);
-if(params.has('num')) {
+if (params.has('num')) {
     const num = params.get('num').toString().length;
-    if (num == (1 || 2) )  {
+    if (num == (1 || 2)) {
         console.log('is Principle');
         choosePrinciple(params.get('num'));
-    } 
+    }
     if (num == (3 || 4)) {
         console.log('is Guideline');
         getGuideline(params.get('num'), params.get('num').toString());
-    } 
+    }
     if (num === 5) {
         console.log('is SC');
         getCriteria(params.get('num').toString());
@@ -58,61 +59,61 @@ function choosePrinciple(index) {
         .then(response => response.json())
         .then(data => {
 
-        const guidelines = data.principles[index].guidelines;
-        let guidebuttonlist = ``;
-        for (const guide of guidelines) {
-            guidebuttonlist += `
+            const guidelines = data.principles[index].guidelines;
+            let guidebuttonlist = ``;
+            for (const guide of guidelines) {
+                guidebuttonlist += `
             <li>
                 <button onclick="getGuideline(${index}, ${guide.num.toString()})" class="button" data-button-variant="positive" data-button-radius="hard" >${guide.handle}</button>
             </li>
         `;
-        }
+            }
 
-        document.getElementById("output").innerHTML = principlestate =
-        `<h1>${data.principles[index].num}. Principle: ${data.principles[index].handle}</h1>
+            document.getElementById("output").innerHTML = principlestate =
+                `<h1>${data.principles[index].num}. Principle: ${data.principles[index].handle}</h1>
         ${data.principles[index].content}
         <ul class="cluster">
         <button class="button" data-button-variant="primary" onclick="(getGuideline(${index}, ${false}))">Get a random Guideline</button>
         ${guidebuttonlist}
         </ul>
         `
-        const url = new URL(location);
-        url.searchParams.set('num', index);
-        history.pushState({}, "", url);
-    })
-    .catch(error => console.error('Error loading data:', error))
+            const url = new URL(location);
+            url.searchParams.set('num', index);
+            history.pushState({}, "", url);
+        })
+        .catch(error => console.error('Error loading data:', error))
 }
 
 function getGuideline(index, specific = false) {
     fetch('js/wcag.json')
         .then(response => response.json())
         .then(data => {
-        let guideline;
-        if (specific != false) {
-        guideline = findObjectByValue(data, specific.toString());
-        } else {
-        guideline = getRandomItem(data.principles[index].guidelines);
-        }
-        const successcriteria = guideline.successcriteria;
-        let buttonlist = ``;
-        for (const sc of successcriteria) {
-            buttonlist += `
+            let guideline;
+            if (specific != false) {
+                guideline = findObjectByValue(data, specific.toString());
+            } else {
+                guideline = getRandomItem(data.principles[index].guidelines);
+            }
+            const successcriteria = guideline.successcriteria;
+            let buttonlist = ``;
+            for (const sc of successcriteria) {
+                buttonlist += `
             <li>
                 <button onclick="getCriteria('${sc.num}')"class="button" data-button-variant="positive" data-button-radius="hard" >${sc.handle}</button>
             </li>
         `;
-        }
-        document.getElementById("output").innerHTML = guidelinestate =
-        `
+            }
+            document.getElementById("output").innerHTML = guidelinestate =
+                `
         <h2>${guideline.num}. Guideline: ${guideline.handle}</h2>
         ${guideline.content}
         <ul class="cluster">
         ${buttonlist}
         </ul>
         `
-        const url = new URL(location);
-        url.searchParams.set('num', guideline.num);
-        history.pushState({}, "", url);        
+            const url = new URL(location);
+            url.searchParams.set('num', guideline.num);
+            history.pushState({}, "", url);
         })
         .catch(error => console.error('Error loading data:', error));
 }
@@ -129,12 +130,12 @@ function getCriteria(num) {
             let failurebuttonlist = ``;
             if (sc.techniques.sufficient) {
                 for (const sufficient of sc.techniques.sufficient) {
-                    if (sufficient.techniques){
+                    if (sufficient.techniques) {
                         sufficientbuttonlist += `
                         <li>
                             <h3>${sufficient.title}</h3>
                         </li>`;
-                        if(sufficient.techniques[0].and){
+                        if (sufficient.techniques[0].and) {
                             sufficientbuttonlist += `
                             <li>
                                 <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${sufficient.techniques[0].and[0].technology}/${sufficient.techniques[0].and[0].id}" data-button-variant="ghost" data-button-radius="hard">${sufficient.techniques[0].and[0].title}</a>
@@ -146,7 +147,7 @@ function getCriteria(num) {
                             `;
                         } else {
                             for (const moretechniques of sufficient.techniques) {
-                            sufficientbuttonlist += `
+                                sufficientbuttonlist += `
                             <li>
                                 <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${moretechniques.technology}/${moretechniques.id}" data-button-variant="ghost" data-button-radius="hard">${moretechniques.title}</a>
                             </li>`;
@@ -155,39 +156,45 @@ function getCriteria(num) {
                         if (sufficient.groups) {
                             console.log(sufficient);
                             for (const group of sufficient.groups) {
-                            sufficientbuttonlist += `
+                                sufficientbuttonlist += `
                             <li>
                                 <h3>${group.title}</h3>
                             </li>`
-                            for (const grouptechniques of group.techniques){ 
-                                console.log(grouptechniques);
-                            sufficientbuttonlist +=     
-                            `<li>
+                                for (const grouptechniques of group.techniques) {
+                                    console.log(grouptechniques);
+                                    sufficientbuttonlist +=
+                                        `<li>
                                 <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${grouptechniques.technology}/${grouptechniques.id}" data-button-variant="ghost" data-button-radius="hard">${grouptechniques.title}</a>
                             </li>`;
-                            }    
-                            }    
-                        }                    
-                    } else if (sufficient.using){
+                                }
+                            }
+                        }
+                    } else if (sufficient.using) {
                         sufficientbuttonlist += `
                         <li>
                             <h3>${sufficient.title}</h3>
                         </li>`;
                         for (const using of sufficient.using) {
-                        sufficientbuttonlist += `
+                            sufficientbuttonlist += `
                         <li>
                             <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${using.technology}/${using.id}" data-button-variant="ghost" data-button-radius="hard">${using.title}</a>
                         </li>`;
                         }
-                    } else {    
-                    sufficientbuttonlist += `
+                    } else if (!sufficient.technology && !sufficient.id) {
+                        sufficientbuttonlist += `
+                    <li>
+                        <p>${sufficient.title}</p>
+                    </li>
+                    `
+                    } else {
+                        sufficientbuttonlist += `
                     <li>
                         <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${sufficient.technology}/${sufficient.id}" data-button-variant="ghost" data-button-radius="hard">${sufficient.title}</a>
                     </li>`;
                     }
                 }
-            }    
-           if (sc.techniques.advisory) {
+            }
+            if (sc.techniques.advisory) {
                 for (const advisory of sc.techniques.advisory) {
                     advisorybuttonlist += `
                     <li>
@@ -196,18 +203,18 @@ function getCriteria(num) {
                 `;
                 }
             }
-           if (sc.techniques.failure) {
-            for (const failure of sc.techniques.failure) {
-                failurebuttonlist += `
+            if (sc.techniques.failure) {
+                for (const failure of sc.techniques.failure) {
+                    failurebuttonlist += `
                 <li>
                     <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${failure.technology}/${failure.id}" data-button-variant="negative" data-button-radius="hard" >${failure.title}</a>
                 </li>
             `;
+                }
             }
-           }
 
             document.getElementById("output").innerHTML = successcriteriastate =
-            `
+                `
             <h2> ${sc.num} <a href="https://www.w3.org/WAI/WCAG22/quickref/#${sc.id}">Success Criterion</a></h2>
             ${sc.content}
             <h3>Sufficient Techniques</h3>
@@ -216,16 +223,16 @@ function getCriteria(num) {
             </ul>
             <h3>Advisory Techniques</h3>
             <ul class="cluster">
-             ${advisorybuttonlist ? advisorybuttonlist : 'None'}
+             ${advisorybuttonlist ? advisorybuttonlist : '<li>None</li>'}
             </ul>
             <h3>Failure Techniques</h3>
             <ul class="cluster">
-            ${failurebuttonlist ? failurebuttonlist : 'None'}
+            ${failurebuttonlist ? failurebuttonlist : '<li>None</li>'}
             </ul>
             `
             const url = new URL(location);
             url.searchParams.set('num', sc.num);
-            history.pushState({}, "", url);          
+            history.pushState({}, "", url);
         })
         .catch(error => console.error('Error loading data:', error));
 }
