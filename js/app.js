@@ -1,5 +1,8 @@
 "use strict";
 
+// Test
+document.getElementById('output').focus();
+
 window.addEventListener('popstate', function (event) {
     // This will force a full page reload, ignoring cache
     // Temporary Solution TODO: Upgrade
@@ -80,6 +83,7 @@ function choosePrinciple(index) {
             const url = new URL(location);
             url.searchParams.set('num', index);
             history.pushState({}, "", url);
+            document.getElementById('output').focus();
         })
         .catch(error => console.error('Error loading data:', error))
 }
@@ -114,6 +118,8 @@ function getGuideline(index, specific = false) {
             const url = new URL(location);
             url.searchParams.set('num', guideline.num);
             history.pushState({}, "", url);
+            document.getElementById('output').focus();
+
         })
         .catch(error => console.error('Error loading data:', error));
 }
@@ -236,6 +242,7 @@ function getCriteria(num) {
             const url = new URL(location);
             url.searchParams.set('num', sc.num);
             history.pushState({}, "", url);
+            document.getElementById('output').focus();
         })
         .catch(error => console.error('Error loading data:', error));
 }

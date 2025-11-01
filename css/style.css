@@ -293,7 +293,7 @@ main {
 main > #output {
   padding-inline: 16px;
   max-width: 70ch;
-  margin: 0px auto 0px auto; 
+  margin: 8px auto 8px auto; 
   display: flex;
   flex-direction: column;
   justify-content: center;
