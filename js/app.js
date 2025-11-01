@@ -134,14 +134,41 @@ function getCriteria(num) {
                         <li>
                             <h3>${sufficient.title}</h3>
                         </li>`;
-                        for (const moretechniques of sufficient.techniques) {
-                        sufficientbuttonlist += `
-                        <li>
-                            <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${moretechniques.technology}/${moretechniques.id}" data-button-variant="ghost" data-button-radius="hard">${moretechniques.title}</a>
-                        </li>`;
+                        if(sufficient.techniques[0].and){
+                            sufficientbuttonlist += `
+                            <li>
+                                <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${sufficient.techniques[0].and[0].technology}/${sufficient.techniques[0].and[0].id}" data-button-variant="ghost" data-button-radius="hard">${sufficient.techniques[0].and[0].title}</a>
+                            </li>
+                            <li class="and-text"><strong>AND</strong></li>
+                            <li>
+                                <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${sufficient.techniques[0].and[1].technology}/${sufficient.techniques[0].and[1].id}" data-button-variant="ghost" data-button-radius="hard">${sufficient.techniques[0].and[1].title}</a>
+                            </li>
+                            `;
+                        } else {
+                            for (const moretechniques of sufficient.techniques) {
+                            sufficientbuttonlist += `
+                            <li>
+                                <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${moretechniques.technology}/${moretechniques.id}" data-button-variant="ghost" data-button-radius="hard">${moretechniques.title}</a>
+                            </li>`;
+                            }
                         }
-                    } 
-                    if (sufficient.using){
+                        if (sufficient.groups) {
+                            console.log(sufficient);
+                            for (const group of sufficient.groups) {
+                            sufficientbuttonlist += `
+                            <li>
+                                <h3>${group.title}</h3>
+                            </li>`
+                            for (const grouptechniques of group.techniques){ 
+                                console.log(grouptechniques);
+                            sufficientbuttonlist +=     
+                            `<li>
+                                <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${grouptechniques.technology}/${grouptechniques.id}" data-button-variant="ghost" data-button-radius="hard">${grouptechniques.title}</a>
+                            </li>`;
+                            }    
+                            }    
+                        }                    
+                    } else if (sufficient.using){
                         sufficientbuttonlist += `
                         <li>
                             <h3>${sufficient.title}</h3>
@@ -151,13 +178,10 @@ function getCriteria(num) {
                         <li>
                             <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${using.technology}/${using.id}" data-button-variant="ghost" data-button-radius="hard">${using.title}</a>
                         </li>`;
-                        
-                    }    
-
+                        }
                     } else {    
                     sufficientbuttonlist += `
                     <li>
-
                         <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${sufficient.technology}/${sufficient.id}" data-button-variant="ghost" data-button-radius="hard">${sufficient.title}</a>
                     </li>`;
                     }
