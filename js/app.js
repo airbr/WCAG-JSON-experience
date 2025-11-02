@@ -1,6 +1,6 @@
 "use strict";
 
-// Test
+// Test for a start
 document.getElementById('output').focus();
 
 window.addEventListener('popstate', function (event) {
@@ -15,15 +15,12 @@ const params = new URLSearchParams(url.search);
 if (params.has('num')) {
     const num = params.get('num').toString().length;
     if (num == (1 || 2)) {
-        console.log('is Principle');
         choosePrinciple(params.get('num'));
     }
     if (num == (3 || 4)) {
-        console.log('is Guideline');
         getGuideline(params.get('num'), params.get('num').toString());
     }
     if (num === 5 || 6) {
-        console.log('is SC');
         getCriteria(params.get('num').toString());
     }
 }
@@ -141,26 +138,26 @@ function getCriteria(num) {
                         <li>
                             <h3>${sufficient.title}</h3>
                         </li>`;
-                        if (sufficient.techniques[0].and) {
-                            sufficientbuttonlist += `
-                            <li>
-                                <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${sufficient.techniques[0].and[0].technology}/${sufficient.techniques[0].and[0].id}" data-button-variant="ghost" data-button-radius="hard">${sufficient.techniques[0].and[0].title}</a>
-                            </li>
-                            <li class="and-text"><strong>AND</strong></li>
-                            <li>
-                                <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${sufficient.techniques[0].and[1].technology}/${sufficient.techniques[0].and[1].id}" data-button-variant="ghost" data-button-radius="hard">${sufficient.techniques[0].and[1].title}</a>
-                            </li>
-                            `;
-                        } else {
-                            for (const moretechniques of sufficient.techniques) {
-                                if (moretechniques.title && !moretechniques.technology && !moretechniques.id) {
-                                  // Redudant
+                        for (const tech of sufficient.techniques) {
+                            if (tech.and) {
+                                sufficientbuttonlist += `
+                                <li>
+                                    <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${tech.and[0].technology}/${tech.and[0].id}" data-button-variant="ghost" data-button-radius="hard">${tech.and[0].title}</a>
+                                </li>
+                                <li class="and-text"><strong>AND</strong></li>
+                                <li>
+                                    <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${tech.and[1].technology}/${tech.and[1].id}" data-button-variant="ghost" data-button-radius="hard">${tech.and[1].title}</a>
+                                </li>
+                                `;
+                            } else {
+                                if (tech.title && !tech.technology && !tech.id) {
+                                // Redundant
                                 } else {
                                 sufficientbuttonlist += `
                                 <li>
-                                    <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${moretechniques.technology}/${moretechniques.id}" data-button-variant="ghost" data-button-radius="hard">${moretechniques.title}</a>
+                                    <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${tech.technology}/${tech.id}" data-button-variant="ghost" data-button-radius="hard">${tech.title}</a>
                                 </li>`;
-                                }
+                                }        
                             }
                         }
                         if (sufficient.groups) {
@@ -172,9 +169,9 @@ function getCriteria(num) {
                                 for (const grouptechniques of group.techniques) {
                                     console.log(grouptechniques);
                                     sufficientbuttonlist +=
-                                        `<li>
-                                <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${grouptechniques.technology}/${grouptechniques.id}" data-button-variant="ghost" data-button-radius="hard">${grouptechniques.title}</a>
-                            </li>`;
+                                    `<li>
+                                      <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${grouptechniques.technology}/${grouptechniques.id}" data-button-variant="ghost" data-button-radius="hard">${grouptechniques.title}</a>
+                                     </li>`;
                                 }
                             }
                         }
@@ -214,12 +211,20 @@ function getCriteria(num) {
             }
             if (sc.techniques.failure) {
                 for (const failure of sc.techniques.failure) {
-                    failurebuttonlist += `
-                <li>
-                    <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${failure.technology}/${failure.id}" data-button-variant="negative" data-button-radius="hard" >${failure.title}</a>
-                </li>
-            `;
-                }
+                    if (failure.title && !failure.technology && !failure.id) {
+                        failurebuttonlist += `
+                        <li>
+                            <a class="button" data-button-variant="negative" data-button-radius="hard" >${failure.title}</a>
+                        </li>
+                        `;
+                    } else {
+                        failurebuttonlist += `
+                        <li>
+                            <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${failure.technology}/${failure.id}" data-button-variant="negative" data-button-radius="hard" >${failure.title}</a>
+                        </li>
+                        `;
+                    }
+                }   
             }
 
             document.getElementById("output").innerHTML = successcriteriastate =
