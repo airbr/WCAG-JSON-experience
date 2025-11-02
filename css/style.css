@@ -48,10 +48,6 @@ h2 {
   font-size: var(--guideline-xp-1);
 }
 
-h3 {
-  font-size: var(--guideline-xp-1);
-}
-
 p {
   font-size: var(--guideline-xp-0);
 }
@@ -334,7 +330,7 @@ nav {
   display: flex;
   justify-content: center;
   background: #b3d4fc;
-  position: sticky; top: 0;
+  /* position: sticky; top: 0; */
 }
 
 nav h2 {
@@ -365,6 +361,7 @@ details[open] summary {
 }
 
 .title-head {
+  font-size: var(--guideline-xp--1);
   margin: 0px;
   padding-inline: 10px;
 }

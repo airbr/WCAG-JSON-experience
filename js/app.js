@@ -106,7 +106,7 @@ function getGuideline(index, specific = false) {
             }
             document.getElementById("output").innerHTML = guidelinestate =
                 `
-        <h2>${guideline.num}. Guideline: ${guideline.handle}</h2>
+        <h1 id="journey">${guideline.num}. Guideline: ${guideline.handle}</h1>
         ${guideline.content}
         <ul class="cluster">
         ${buttonlist}
@@ -136,7 +136,7 @@ function getCriteria(num) {
                     if (sufficient.techniques) {
                         sufficientbuttonlist += `
                         <li>
-                            <h3>${sufficient.title}</h3>
+                            <h2>${sufficient.title}</h2>
                         </li>`;
                         for (const tech of sufficient.techniques) {
                             if (tech.and) {
@@ -164,7 +164,7 @@ function getCriteria(num) {
                             for (const group of sufficient.groups) {
                                 sufficientbuttonlist += `
                             <li>
-                                <h3>${group.title}</h3>
+                                <h2>${group.title}</h2>
                             </li>`
                                 for (const grouptechniques of group.techniques) {
                                     console.log(grouptechniques);
@@ -178,7 +178,7 @@ function getCriteria(num) {
                     } else if (sufficient.using) {
                         sufficientbuttonlist += `
                         <li>
-                            <h3>${sufficient.title}</h3>
+                            <h2>${sufficient.title}</h2>
                         </li>`;
                         for (const using of sufficient.using) {
                             sufficientbuttonlist += `
@@ -202,11 +202,25 @@ function getCriteria(num) {
             }
             if (sc.techniques.advisory) {
                 for (const advisory of sc.techniques.advisory) {
-                    advisorybuttonlist += `
+                if (advisory.and) {
+                advisorybuttonlist +=          
+                `
+                    <li>
+                        <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${advisory.and[0].technology}/${advisory.and[0].id}" data-button-variant="ghost" data-button-radius="hard">${advisory.and[0].title}</a>
+                    </li>
+                    <li class="and-text"><strong>AND</strong></li>
+                    <li>
+                        <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${advisory.and[1].technology}/${advisory.and[1].id}" data-button-variant="ghost" data-button-radius="hard">${advisory.and[1].title}</a>
+                    </li>
+                `;
+                } else {
+                advisorybuttonlist +=          
+                `
                     <li>
                         <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${advisory.technology}/${advisory.id}" data-button-variant="ghost" data-ghost-button>${advisory.title}</a>
                     </li>
                 `;
+                }
                 }
             }
             if (sc.techniques.failure) {
@@ -229,17 +243,17 @@ function getCriteria(num) {
 
             document.getElementById("output").innerHTML = successcriteriastate =
                 `
-            <h2> ${sc.num} <a href="https://www.w3.org/WAI/WCAG22/quickref/#${sc.id}">Success Criterion</a></h2>
+            <h1 id="journey"> ${sc.num} <a href="https://www.w3.org/WAI/WCAG22/quickref/#${sc.id}">Success Criterion</a></h1>
             ${sc.content}
-            <h3>Sufficient Techniques</h3>
+            <h2>Sufficient Techniques</h2>
             <ul class="cluster">
              ${sufficientbuttonlist}
             </ul>
-            <h3>Advisory Techniques</h3>
+            <h2>Advisory Techniques</h2>
             <ul class="cluster">
              ${advisorybuttonlist ? advisorybuttonlist : '<li>None</li>'}
             </ul>
-            <h3>Failure Techniques</h3>
+            <h2>Failure Techniques</h2>
             <ul class="cluster">
             ${failurebuttonlist ? failurebuttonlist : '<li>None</li>'}
             </ul>
