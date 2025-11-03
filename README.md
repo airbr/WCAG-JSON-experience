@@ -30,6 +30,8 @@ Notes and disclaimers
 
 Main goal: Improve accessibility of dynamically loaded content. Testing with various assistive tech.
 
+Improve Navigation and Progress through the Journey.
+
 Secondary goal:
 
 Fix remaining undefined issues, such as when `and` and `using` are both used in a success criteria
