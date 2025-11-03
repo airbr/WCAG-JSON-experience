@@ -68,7 +68,14 @@ function choosePrinciple(index) {
             }
 
             document.getElementById("output").innerHTML = principlestate =
-                `<h1>${data.principles[index].num}. Principle: ${data.principles[index].handle}</h1>
+        `
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/">Start</a></li>
+            <li>${data.principles[index].handle}</li>
+        </ol>
+        </nav>
+        <h1>${data.principles[index].num}. Principle: ${data.principles[index].handle}</h1>
         ${data.principles[index].content}
         <ul class="cluster">
         <button class="button" data-button-variant="primary" onclick="(getGuideline(${index}, ${false}))">Get a Random WCAG Guideline</button>
@@ -88,6 +95,7 @@ function getGuideline(index, specific = false) {
     fetch('js/wcag.json')
         .then(response => response.json())
         .then(data => {
+            const principle = findObjectByValue(data, specific.toString().slice(0, -2));
             let guideline;
             if (specific != false) {
                 guideline = findObjectByValue(data, specific.toString());
@@ -104,7 +112,14 @@ function getGuideline(index, specific = false) {
         `;
             }
             document.getElementById("output").innerHTML = guidelinestate =
-                `
+        `
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+        <ol>
+            <li><a href="/">Start</a></li>
+            <li><a href="/?num=${principle.num}">${principle.handle}</a></li>
+            <li>${guideline.handle}</li>
+        </ol>
+        </nav>
         <h1 id="journey">${guideline.num}. Guideline: ${guideline.handle}</h1>
         ${guideline.content}
         <ul class="cluster">
@@ -124,6 +139,8 @@ function getCriteria(num) {
         .then(response => response.json())
         .then(data => {
             const sc = findObjectByValue(data, num);
+            const principle = findObjectByValue(data, num.slice(0, -4));
+            const guideline = findObjectByValue(data, num.slice(0, -2));
             let sufficientbuttonlist = ``;
             let advisorybuttonlist = ``;
             let failurebuttonlist = ``;
@@ -237,7 +254,15 @@ function getCriteria(num) {
             }
 
             document.getElementById("output").innerHTML = successcriteriastate =
-                `
+            ` 
+            <nav aria-label="Breadcrumb" class="breadcrumb">
+            <ol>
+                 <li><a href="/">Start</a></li>
+                 <li><a href="/?num=${principle.num}">${principle.handle}</a></li>
+                 <li><a href="/?num=${guideline.num}">${guideline.handle}</a></li>
+                 <li>${sc.handle}</li>
+            </ol>
+            </nav>  
             <h1 id="journey"> ${sc.num} <a href="https://www.w3.org/WAI/WCAG22/quickref/#${sc.id}">Success Criterion</a></h1>
             ${sc.content}
             <h2>Sufficient Techniques</h2>
