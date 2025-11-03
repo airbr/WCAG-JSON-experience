@@ -119,6 +119,12 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+*:focus-visible { 
+  outline: 3px solid #005a9c;
+	outline-offset: 0.25rem;
+	border-radius: 0.125rem;
+}
+    
 .button {
   --button-bg: #342a21;
   --button-color: #ffffff;

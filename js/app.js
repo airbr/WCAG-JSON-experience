@@ -1,27 +1,25 @@
 "use strict";
-
 // Test for a start
 document.getElementById('output').focus();
+loadFromParams();
 
-window.addEventListener('popstate', function (event) {
-    // This will force a full page reload, ignoring cache
-    // Temporary Solution TODO: Upgrade
-    location.reload(true);
-});
-
+// Initial load from Params
 // If URL Param, do something
-const url = new URL(window.location.href);
-const params = new URLSearchParams(url.search);
-if (params.has('num')) {
-    const num = params.get('num').toString().length;
-    if (num == (1 || 2)) {
-        choosePrinciple(params.get('num'));
-    }
-    if (num == (3 || 4)) {
-        getGuideline(params.get('num'), params.get('num').toString());
-    }
-    if (num === 5 || 6) {
-        getCriteria(params.get('num').toString());
+// This is messy and needs clean up
+function loadFromParams(){
+    const url = new URL(window.location.href);
+    const params = new URLSearchParams(url.search);
+    if (params.has('num')) {
+        const numparam = params.get('num').length;
+        if (numparam === (1 || 2)) {
+            choosePrinciple(Number(params.get('num')) - 1);
+        }
+        if (numparam === (3 || 4)) {
+            getGuideline(params.get('num'), params.get('num').toString());
+        }
+        if (numparam === (5 || 6)) {
+            getCriteria(params.get('num').toString());
+        }
     }
 }
 
@@ -73,13 +71,14 @@ function choosePrinciple(index) {
                 `<h1>${data.principles[index].num}. Principle: ${data.principles[index].handle}</h1>
         ${data.principles[index].content}
         <ul class="cluster">
-        <button class="button" data-button-variant="primary" onclick="(getGuideline(${index}, ${false}))">Get a random Guideline</button>
+        <button class="button" data-button-variant="primary" onclick="(getGuideline(${index}, ${false}))">Get a Random WCAG Guideline</button>
         ${guidebuttonlist}
         </ul>
         `
+            let num = index + 1;
             const url = new URL(location);
-            url.searchParams.set('num', index);
-            history.pushState({}, "", url);
+            url.searchParams.set('num', num);
+            history.pushState({ num: num }, "", url);
             document.getElementById('output').focus();
         })
         .catch(error => console.error('Error loading data:', error))
@@ -114,9 +113,8 @@ function getGuideline(index, specific = false) {
         `
             const url = new URL(location);
             url.searchParams.set('num', guideline.num);
-            history.pushState({}, "", url);
+            history.pushState({ num: guideline.num }, "", url);
             document.getElementById('output').focus();
-
         })
         .catch(error => console.error('Error loading data:', error));
 }
@@ -125,9 +123,7 @@ function getCriteria(num) {
     fetch('js/wcag.json')
         .then(response => response.json())
         .then(data => {
-
             const sc = findObjectByValue(data, num);
-
             let sufficientbuttonlist = ``;
             let advisorybuttonlist = ``;
             let failurebuttonlist = ``;
@@ -167,7 +163,6 @@ function getCriteria(num) {
                                 <h2>${group.title}</h2>
                             </li>`
                                 for (const grouptechniques of group.techniques) {
-                                    console.log(grouptechniques);
                                     sufficientbuttonlist +=
                                     `<li>
                                       <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${grouptechniques.technology}/${grouptechniques.id}" data-button-variant="ghost" data-button-radius="hard">${grouptechniques.title}</a>
@@ -260,7 +255,7 @@ function getCriteria(num) {
             `
             const url = new URL(location);
             url.searchParams.set('num', sc.num);
-            history.pushState({}, "", url);
+            history.pushState({ num: sc.num }, "", url);
             document.getElementById('output').focus();
         })
         .catch(error => console.error('Error loading data:', error));
