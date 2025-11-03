@@ -311,9 +311,10 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
-section > *:first-child {
+#output > *:first-child {
   margin-right: auto;
 }
 
@@ -356,10 +357,14 @@ footer > p, footer :visited {
 }
 
 nav {
-  color: #005a9c;
-  padding: 8px;
+  padding-inline: 16px;
+  max-width: 70ch;
+  width: 100%;
+  margin: 8px auto 8px auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: center;  
+  color: #005a9c;
   background: #b3d4fc;
   /* position: sticky; top: 0; */
 }

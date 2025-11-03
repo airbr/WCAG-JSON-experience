@@ -67,14 +67,15 @@ function choosePrinciple(index) {
         `;
             }
 
-            document.getElementById("output").innerHTML = principlestate =
-        `
-        <nav aria-label="Breadcrumb" class="breadcrumb">
+        document.getElementById("breadcrumb").innerHTML =
+        `  
         <ol>
             <li><a href="/">Start</a></li>
             <li>${data.principles[index].handle}</li>
         </ol>
-        </nav>
+        `            
+        document.getElementById("output").innerHTML = principlestate =
+        `
         <h1 id="journey">${data.principles[index].num} Principle: ${data.principles[index].handle}</h1>
         ${data.principles[index].content}
         <ul class="cluster">
@@ -113,15 +114,16 @@ function getGuideline(index, specific = false) {
             </li>
         `;
             }
-            document.getElementById("output").innerHTML = guidelinestate =
-        `
-        <nav aria-label="Breadcrumb" class="breadcrumb">
+        document.getElementById("breadcrumb").innerHTML =
+        `  
         <ol>
             <li><a href="/">Start</a></li>
             <li><a href="/?num=${principle.num}">${principle.handle}</a></li>
             <li>${guideline.handle}</li>
         </ol>
-        </nav>
+        `
+        document.getElementById("output").innerHTML = guidelinestate =
+        `
         <h1 id="journey">${guideline.num} Guideline: ${guideline.handle}</h1>
         ${guideline.content}
         <ul class="cluster">
@@ -263,16 +265,17 @@ function getCriteria(num) {
                 }   
             }
 
-            document.getElementById("output").innerHTML = successcriteriastate =
-            ` 
-            <nav aria-label="Breadcrumb" class="breadcrumb">
+            document.getElementById("breadcrumb").innerHTML =
+            `            
             <ol>
                  <li><a href="/">Start</a></li>
                  <li><a href="/?num=${principle.num}">${principle.handle}</a></li>
                  <li><a href="/?num=${guideline.num}">${guideline.handle}</a></li>
                  <li>${sc.handle}</li>
             </ol>
-            </nav>  
+            `
+            document.getElementById("output").innerHTML = successcriteriastate =
+            ` 
             <h1 id="journey"> ${sc.num} <a href="https://www.w3.org/WAI/WCAG22/quickref/#${sc.id}">Success Criterion</a></h1>
             ${sc.content}
             <h2>Sufficient Techniques</h2>

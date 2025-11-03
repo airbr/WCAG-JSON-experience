@@ -20,9 +20,14 @@
 </head>
 
 <body>
-  <nav>
-    <a class="header-link" href="/"><img width="44" height="44" class="header-icon" src="icon.png" alt=""><p class="title-head">A Web Accessibility Experience - under construction 🚧</p></a>
-  </nav>
+  <!-- <nav>
+    <a class="header-link" href="/"><p class="title-head">A Web Accessibility Experience - under construction 🚧</p></a>
+  </nav> -->
+  <nav id="breadcrumb" aria-label="Breadcrumb" class="breadcrumb header-link">
+  <ol>
+        <li><img width="44" height="44" class="header-icon" src="icon.png" alt="Accessibility symbol"><span class="title-head">You are at the beginning.</span></li>
+  </ol>
+  </nav>  
   <main>
     <section id="output" tabindex="-1" aria-labelledby="journey">
       <h1 id="journey">Choose your journey:</h1>
