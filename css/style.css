@@ -122,6 +122,7 @@ textarea {
 .breadcrumb {
   background: #d7d9ce;
   padding: 0 0.5rem;
+  justify-content: left;
 }
 
 .breadcrumb ol {
