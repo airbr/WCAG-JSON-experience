@@ -75,7 +75,7 @@ function choosePrinciple(index) {
             <li>${data.principles[index].handle}</li>
         </ol>
         </nav>
-        <h1>${data.principles[index].num} Principle: ${data.principles[index].handle}</h1>
+        <h1 id="journey">${data.principles[index].num} Principle: ${data.principles[index].handle}</h1>
         ${data.principles[index].content}
         <ul class="cluster">
         <button class="button" data-button-variant="primary" onclick="getGuideline(${index}, ${false})">Get a Random WCAG Guideline</button>
