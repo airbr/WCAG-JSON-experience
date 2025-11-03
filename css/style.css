@@ -305,13 +305,16 @@ body {
 }
 
 main {
-  min-height: 84vh;
+  min-height: 70vh;
   font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
   font-weight: normal;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+section > *:first-child {
+  margin-right: auto;
 }
 
 main > #output {
