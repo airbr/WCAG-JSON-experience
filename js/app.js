@@ -75,10 +75,10 @@ function choosePrinciple(index) {
             <li>${data.principles[index].handle}</li>
         </ol>
         </nav>
-        <h1>${data.principles[index].num}. Principle: ${data.principles[index].handle}</h1>
+        <h1>${data.principles[index].num} Principle: ${data.principles[index].handle}</h1>
         ${data.principles[index].content}
         <ul class="cluster">
-        <button class="button" data-button-variant="primary" onclick="(getGuideline(${index}, ${false}))">Get a Random WCAG Guideline</button>
+        <button class="button" data-button-variant="primary" onclick="getGuideline(${index}, ${false})">Get a Random WCAG Guideline</button>
         ${guidebuttonlist}
         </ul>
         `
@@ -95,12 +95,14 @@ function getGuideline(index, specific = false) {
     fetch('js/wcag.json')
         .then(response => response.json())
         .then(data => {
-            const principle = findObjectByValue(data, specific.toString().slice(0, -2));
             let guideline;
+            let principle;
             if (specific != false) {
                 guideline = findObjectByValue(data, specific.toString());
+                principle = findObjectByValue(data, specific.toString().slice(0, -2));
             } else {
                 guideline = getRandomItem(data.principles[index].guidelines);
+                principle = findObjectByValue(data, guideline.num.toString().slice(0, -2));
             }
             const successcriteria = guideline.successcriteria;
             let buttonlist = ``;
@@ -120,7 +122,7 @@ function getGuideline(index, specific = false) {
             <li>${guideline.handle}</li>
         </ol>
         </nav>
-        <h1 id="journey">${guideline.num}. Guideline: ${guideline.handle}</h1>
+        <h1 id="journey">${guideline.num} Guideline: ${guideline.handle}</h1>
         ${guideline.content}
         <ul class="cluster">
         ${buttonlist}
@@ -139,8 +141,16 @@ function getCriteria(num) {
         .then(response => response.json())
         .then(data => {
             const sc = findObjectByValue(data, num);
-            const principle = findObjectByValue(data, num.slice(0, -4));
-            const guideline = findObjectByValue(data, num.slice(0, -2));
+            let principle;
+            let guideline;
+            if (num.length === 6) {
+                guideline = findObjectByValue(data, num.slice(0, -3));
+                principle = findObjectByValue(data, num.slice(0, -5));
+            } else {
+                guideline = findObjectByValue(data, num.slice(0, -2));
+                principle = findObjectByValue(data, num.slice(0, -4)); 
+            }
+            console.log(guideline.num);
             let sufficientbuttonlist = ``;
             let advisorybuttonlist = ``;
             let failurebuttonlist = ``;
