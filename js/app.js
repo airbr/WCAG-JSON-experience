@@ -276,7 +276,8 @@ function getCriteria(num) {
             `
             document.getElementById("output").innerHTML = successcriteriastate =
             ` 
-            <h1 id="journey"> ${sc.num} <a href="https://www.w3.org/WAI/WCAG22/quickref/#${sc.id}">Success Criterion</a></h1>
+            <h1 id="journey"> ${sc.num} <a href="https://www.w3.org/WAI/WCAG22/quickref/#${sc.id}">Success Criterion Quick Reference</a></h1>
+            <h2><a href="https://www.w3.org/WAI/WCAG22/understanding/${sc.id}">How to understand  "${sc.id}" criterion</a></h2>
             ${sc.content}
             <h2>Sufficient Techniques</h2>
             <ul class="cluster">
