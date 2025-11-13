@@ -55,6 +55,11 @@ p {
   font-size: var(--guideline-xp-0);
 }
 
+.eyebrow {
+  color: #005a9c;
+  font-size: var(--guideline-xp--1);
+}
+
 /*
  * Remove text-shadow in selection highlight:
  * https://twitter.com/miketaylr/status/12228805301
@@ -206,7 +211,7 @@ textarea {
 }
 
 .button:active {
-  transform: scale(.99);
+  transform: scale(.97);
 }
 
 /* Variants */

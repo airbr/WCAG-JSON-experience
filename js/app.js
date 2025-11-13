@@ -71,7 +71,7 @@ function choosePrinciple(index) {
         `  
         <ol>
             <li><a href="/">Start</a></li>
-            <li>${data.principles[index].handle}</li>
+            <li aria-current="page">${data.principles[index].handle}</li>
         </ol>
         `            
         document.getElementById("output").innerHTML = principlestate =
@@ -119,7 +119,7 @@ function getGuideline(index, specific = false) {
         <ol>
             <li><a href="/">Start</a></li>
             <li><a href="/?num=${principle.num}">${principle.handle}</a></li>
-            <li>${guideline.handle}</li>
+            <li aria-current="page">${guideline.handle}</li>
         </ol>
         `
         document.getElementById("output").innerHTML = guidelinestate =
@@ -271,7 +271,7 @@ function getCriteria(num) {
                  <li><a href="/">Start</a></li>
                  <li><a href="/?num=${principle.num}">${principle.handle}</a></li>
                  <li><a href="/?num=${guideline.num}">${guideline.handle}</a></li>
-                 <li>${sc.handle}</li>
+                 <li aria-current="page">${sc.handle}</li>
             </ol>
             `
             document.getElementById("output").innerHTML = successcriteriastate =
