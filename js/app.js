@@ -78,8 +78,9 @@ function choosePrinciple(index) {
         `
         <h1 id="journey">${data.principles[index].num} Principle: ${data.principles[index].handle}</h1>
         ${data.principles[index].content}
+        <p>Choose a Guideline:</p>
         <ul class="cluster">
-        <button class="button" data-button-variant="primary" onclick="getGuideline(${index}, ${false})">Get a Random WCAG Guideline</button>
+        <button class="button" data-button-variant="primary" onclick="getGuideline(${index}, ${false})">Get a Random Guideline</button>
         ${guidebuttonlist}
         </ul>
         `
@@ -126,6 +127,7 @@ function getGuideline(index, specific = false) {
         `
         <h1 id="journey">${guideline.num} Guideline: ${guideline.handle}</h1>
         ${guideline.content}
+        <p>Get a criteria for success:</p>
         <ul class="cluster">
         ${buttonlist}
         </ul>
