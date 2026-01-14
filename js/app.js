@@ -77,7 +77,7 @@ function choosePrinciple(index) {
         document.getElementById("output").innerHTML = principlestate =
         `
         <h1 id="journey">${data.principles[index].num} Principle: ${data.principles[index].handle}</h1>
-        ${data.principles[index].content}
+        <strong>${data.principles[index].content}</strong>
         <p>Choose a Guideline:</p>
         <ul class="cluster">
         <button class="button" data-button-variant="primary" onclick="getGuideline(${index}, ${false})">Get a Random Guideline</button>
@@ -126,7 +126,7 @@ function getGuideline(index, specific = false) {
         document.getElementById("output").innerHTML = guidelinestate =
         `
         <h1 id="journey">${guideline.num} Guideline: ${guideline.handle}</h1>
-        ${guideline.content}
+        <strong>${guideline.content}</strong>
         <p>Get a criteria for success:</p>
         <ul class="cluster">
         ${buttonlist}

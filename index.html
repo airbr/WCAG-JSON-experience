@@ -25,9 +25,31 @@
 </head>
 
 <body>
+  <header>
+    <details class="dropdown">
+      <summary><img width="44" height="44" class="header-icon" src="icon.png" alt="Web Accessibility symbol from Wikipedia"><span class="title-head">Guideline journey.</span></summary>
+  <ul class="cluster header-cluster">
+        <li>
+          <button onclick="choosePrinciple(0)" class="button" data-button-variant="primary-header">Perceivable</button>
+        </li>
+        <li>
+          <button onclick="choosePrinciple(1)" class="button" data-button-variant="primary-header">Operable</button>
+        </li>
+        <li>
+          <button onclick="choosePrinciple(2)" class="button" data-button-variant="primary-header">Understandable</button>
+        </li>
+        <li>
+          <button onclick="choosePrinciple(3)" class="button" data-button-variant="primary-header">Robust</button>
+        </li>
+        <li>
+          <button class="button" data-button-variant="random-header" onclick="getGuideline(Math.floor(Math.random() * 4), false)">Random Guideline</button>
+        </li>
+      </ul>
+    </details>
+  </header>
   <nav id="breadcrumb" aria-label="Breadcrumb" class="breadcrumb header-link">
   <ol>
-        <li aria-current="page"><img width="44" height="44" class="header-icon" src="icon.png" alt="Accessibility symbol"><span class="title-head">You are at the beginning of a Guideline journey.</span></li>
+        <li aria-current="page">Start</li>
   </ol>
   </nav>  
   <main>
