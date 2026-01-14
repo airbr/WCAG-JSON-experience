@@ -128,7 +128,7 @@ textarea {
    ========================================================================== */
 
 .breadcrumb {
-  background: #d7d9ce;
+  background: whitesmoke;
   padding: 0 0.5rem;
   justify-content: left;
 }
@@ -302,7 +302,7 @@ Default: --gutter or var(--space-s-m).
 body {
   --gutter: 1em;
   font-family: sans-serif;
-  background: #d7d9ce;
+  background: whitesmoke;
   align-content: center;
   display: flex;
   justify-content: center;
@@ -336,6 +336,8 @@ main > #output {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 main > section > details {
