@@ -196,6 +196,9 @@ textarea {
 
 /* Hover/focus/active */
 .button:hover {
+  outline: 4px solid #005a9c;
+	outline-offset: 0.25rem;
+	border-radius: 0.125rem;
   background: var(--button-hover-bg);
   color: var(--button-hover-color);
 }

@@ -154,7 +154,6 @@ function getCriteria(num) {
                 guideline = findObjectByValue(data, num.slice(0, -2));
                 principle = findObjectByValue(data, num.slice(0, -4)); 
             }
-            console.log(guideline.num);
             let sufficientbuttonlist = ``;
             let advisorybuttonlist = ``;
             let failurebuttonlist = ``;

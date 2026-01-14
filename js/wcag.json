@@ -620,7 +620,7 @@
                   {
                     "id": "F74",
                     "technology": "failures",
-                    "title": "Failure of  Success Criterion 1.2.2 and 1.2.8 due to not labeling a synchronized media alternative to text as an alternative"
+                    "title": "Failure of Success Criterion 1.2.2 and 1.2.8 due to not labeling a synchronized media alternative to text as an alternative"
                   }
                 ]
               }
@@ -676,7 +676,7 @@
                     "id": "G173",
                     "technology": "general",
                     "title": "Providing a version of a movie with audio descriptions",
-                    "suffix": "using one of the following techniques:",
+                    "suffix": "using one or more of the following techniques:",
                     "using": [
                       {
                         "id": "SM6",
@@ -692,9 +692,6 @@
                         "id": "G226",
                         "technology": "general",
                         "title": "Providing audio descriptions by incorporating narration in the soundtrack"
-                      },
-                      {
-                        "title": "Using any player that supports audio and video"
                       }
                     ]
                   },
@@ -713,9 +710,6 @@
                         "id": "SM2",
                         "technology": "smil",
                         "title": "Adding extended audio description in SMIL 2.0"
-                      },
-                      {
-                        "title": "Using any player that supports audio and video"
                       }
                     ]
                   },
@@ -826,7 +820,7 @@
                     "id": "G173",
                     "technology": "general",
                     "title": "Providing a version of a movie with audio descriptions",
-                    "suffix": "using one of the following techniques:",
+                    "suffix": "using one or more of the following techniques:",
                     "using": [
                       {
                         "id": "SM6",
@@ -842,9 +836,6 @@
                         "id": "G226",
                         "technology": "general",
                         "title": "Providing audio descriptions by incorporating narration in the soundtrack"
-                      },
-                      {
-                        "title": "Using any player that supports audio and video"
                       }
                     ]
                   },
@@ -863,9 +854,6 @@
                         "id": "SM2",
                         "technology": "smil",
                         "title": "Adding extended audio description in SMIL 2.0"
-                      },
-                      {
-                        "title": "Using any player that supports audio and video"
                       }
                     ]
                   },
@@ -968,9 +956,6 @@
                         "id": "SM2",
                         "technology": "smil",
                         "title": "Adding extended audio description in SMIL 2.0"
-                      },
-                      {
-                        "title": "Using any player that supports audio and video"
                       }
                     ]
                   }
@@ -1046,7 +1031,7 @@
                   {
                     "id": "F74",
                     "technology": "failures",
-                    "title": "Failure of  Success Criterion 1.2.2 and 1.2.8 due to not labeling a synchronized media alternative to text as an alternative"
+                    "title": "Failure of Success Criterion 1.2.2 and 1.2.8 due to not labeling a synchronized media alternative to text as an alternative"
                   }
                 ]
               }
@@ -1879,7 +1864,7 @@
                       {
                         "id": "G18",
                         "technology": "general",
-                        "title": "Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text)  and background behind the text"
+                        "title": "Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text"
                       },
                       {
                         "id": "G148",
@@ -1899,7 +1884,7 @@
                       {
                         "id": "G145",
                         "technology": "general",
-                        "title": "Ensuring that a contrast ratio of at least 3:1 exists between text (and images of text)  and background behind the text"
+                        "title": "Ensuring that a contrast ratio of at least 3:1 exists between text (and images of text) and background behind the text"
                       },
                       {
                         "id": "G148",
@@ -2206,7 +2191,7 @@
                       {
                         "id": "G18",
                         "technology": "general",
-                        "title": "Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text)  and background behind the text"
+                        "title": "Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text) and background behind the text"
                       },
                       {
                         "id": "G148",
@@ -4734,7 +4719,7 @@
                   {
                     "id": "G212",
                     "technology": "general",
-                    "title": "Using native controls to ensure  functionality is triggered on the up-event."
+                    "title": "Using native controls to ensure functionality is triggered on the up-event."
                   },
                   {
                     "title": "Touch events are only triggered when touch is removed from a control (Potential future technique)"
@@ -4899,7 +4884,9 @@
               "techniques": {
                 "sufficient": [
                   {
-                    "title": "Ensuring that targets are at least 44 by 44 CSS pixels"
+                    "id": "C44",
+                    "technology": "css",
+                    "title": "Using CSS to ensure targets are at least 44 by 44 CSS pixels"
                   }
                 ],
                 "advisory": [
@@ -5033,7 +5020,7 @@
                   {
                     "id": "C42",
                     "technology": "css",
-                    "title": "Using min-height and min-width to ensure sufficient target spacing"
+                    "title": "Using min-height and min-width on target container to ensure sufficient target spacing"
                   }
                 ]
               }
@@ -5920,11 +5907,6 @@
                         "title": "Providing text descriptions to identify required fields that were not completed"
                       },
                       {
-                        "id": "ARIA2",
-                        "technology": "aria",
-                        "title": "Identifying a required field with the aria-required property"
-                      },
-                      {
                         "id": "ARIA21",
                         "technology": "aria",
                         "title": "Using aria-invalid to Indicate An Error Field"
@@ -5997,6 +5979,11 @@
                     "id": "G199",
                     "technology": "general",
                     "title": "Providing success feedback when data is submitted successfully"
+                  },
+                  {
+                    "id": "ARIA2",
+                    "technology": "aria",
+                    "title": "Identifying a required field with the aria-required property"
                   }
                 ]
               }
@@ -6099,6 +6086,11 @@
                     "id": "G13",
                     "technology": "general",
                     "title": "Describing what will happen before a change to a form control that causes a change of context to occur is made"
+                  },
+                  {
+                    "id": "ARIA2",
+                    "technology": "aria",
+                    "title": "Identifying a required field with the aria-required property"
                   }
                 ],
                 "failure": [
