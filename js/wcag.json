@@ -230,7 +230,7 @@
                       {
                         "id": "G82",
                         "technology": "general",
-                        "title": "Providing a text alternative that identifies the purpose of the non-text content",
+                        "title": "Providing a text alternative that identifies the purpose of interactive non-text content",
                         "suffix": "using one technique from each group outlined below"
                       }
                     ],
@@ -5177,7 +5177,7 @@
                               {
                                 "id": "H54",
                                 "technology": "html",
-                                "title": "Using the dfn element to identify the defining instance of a word"
+                                "title": "Using the dfn element to identify the defining instance of a word or phrase"
                               }
                             ]
                           }
@@ -5244,7 +5244,7 @@
                               {
                                 "id": "H54",
                                 "technology": "html",
-                                "title": "Using the dfn element to identify the defining instance of a word"
+                                "title": "Using the dfn element to identify the defining instance of a word or phrase"
                               }
                             ]
                           }
