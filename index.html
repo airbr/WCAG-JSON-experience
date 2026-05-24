@@ -11,11 +11,9 @@
     }
   </style>
   <link rel="stylesheet" href="css/style.css">
-  <meta name="description" content="An Interactive Web Accessibility Experience using WCAG 2.2 in JSON format">
+  <meta name="description" content="An Interactive Experience using WCAG 2.2 in JSON format">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://guideline-journey.com/">
-  <meta property="og:image:alt" content="Web Accessibility Icon" />
-  <meta property="og:image" content="https://guideline-journey.com/icon.png" />
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.png">
@@ -27,22 +25,25 @@
 <body>
   <header>
     <details class="dropdown">
-      <summary><img width="44" height="44" class="header-icon" src="icon.png" alt="Web Accessibility symbol from Wikipedia"><span class="title-head">Guideline Journey</span></summary>
+      <summary><span class="title-head">Guideline Journey</span></summary>
   <ul class="cluster header-cluster">
         <li>
-          <button onclick="choosePrinciple(0)" class="button" data-button-variant="primary-header">Perceivable</button>
+          <a href="/" class="button" data-button-variant="random-header">Start Over</a>
         </li>
         <li>
-          <button onclick="choosePrinciple(1)" class="button" data-button-variant="primary-header">Operable</button>
+          <button onclick="choosePrinciple(0)" class="button" data-button-variant="primary-header">Select Perceivable</button>
         </li>
         <li>
-          <button onclick="choosePrinciple(2)" class="button" data-button-variant="primary-header">Understandable</button>
+          <button onclick="choosePrinciple(1)" class="button" data-button-variant="primary-header">Select Operable</button>
         </li>
         <li>
-          <button onclick="choosePrinciple(3)" class="button" data-button-variant="primary-header">Robust</button>
+          <button onclick="choosePrinciple(2)" class="button" data-button-variant="primary-header">Select Understandable</button>
         </li>
         <li>
-          <button class="button" data-button-variant="random-header" onclick="getGuideline(Math.floor(Math.random() * 4), false)">Random Guideline</button>
+          <button onclick="choosePrinciple(3)" class="button" data-button-variant="primary-header">Select Robust</button>
+        </li>
+        <li>
+          <button class="button" data-button-variant="random-header" onclick="getGuideline(Math.floor(Math.random() * 4), false)">View Random Guideline</button>
         </li>
       </ul>
     </details>
