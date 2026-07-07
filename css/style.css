@@ -150,8 +150,8 @@ textarea {
 
 
 *:focus-visible { 
-  outline: 3px solid #005a9c;
-	outline-offset: 0.25rem;
+  outline: 4px solid #005a9c;
+	outline-offset: 0.35rem;
 	border-radius: 0.125rem;
 }
     
@@ -160,10 +160,11 @@ textarea {
   --button-color: #ffffff;
   --button-hover-bg: #4b4b4a;
   --button-hover-color: #ffffff;
-  --button-border-width: 3px;
+  --button-border-width: 4px;
   --button-border-style: solid;
   --button-border-color: var(--button-bg);
   --button-radius: 0.5em;
+  --button-outline-offset: .40rem;
 
   display: inline-flex;
   align-items: center;
@@ -197,20 +198,17 @@ textarea {
 /* Hover/focus/active */
 .button:hover {
   outline: 4px solid #005a9c;
-	outline-offset: 0.25rem;
+	outline-offset: 0.35rem;
 	border-radius: 0.125rem;
   background: var(--button-hover-bg);
   color: var(--button-hover-color);
 }
 
 .button:focus {
-  outline-width: var(--button-outline-width, var(--button-border-width));
-  outline-style: var(--button-outline-style, var(--button-border-style));
-  outline-color: var(--button-outline-color, var(--button-border-color));
-  outline-offset: var(
-    --button-outline-offset,
-    calc(var(--button-border-width) * 2)
-  );
+  outline: 4px solid #005a9c;
+	outline-offset: 0.35rem;
+	border-radius: 0.125rem;
+  box-shadow: 0 0 0.2em #005a9c;
 }
 
 .button:active {
@@ -344,6 +342,7 @@ body {
 .dropdown {
   align-items: center;
   width: 100%;
+  max-width: 100%;
 }
 
 main {
@@ -426,6 +425,10 @@ nav h2 {
   margin: 4px;
   padding-inline: 20px;
   font-size: 1.1em;
+}
+
+details:not(.dropdown), summary:not(.dropdown) {
+    max-width: 60ch;
 }
 
 details {

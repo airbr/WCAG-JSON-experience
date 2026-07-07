@@ -410,7 +410,7 @@
                   {
                     "id": "F3",
                     "technology": "failures",
-                    "title": "Failure of Success Criterion 1.1.1 due to using CSS to include images that convey important information"
+                    "title": "Failure of Success Criterion 1.1.1 due to conveying information exclusively using CSS background images"
                   },
                   {
                     "id": "F13",
@@ -2701,32 +2701,60 @@
               "techniques": {
                 "sufficient": [
                   {
-                    "title": "Situation A: Color is used to identify user interface components or used to identify user interface component states",
+                    "title": "Situation A: Color is used to identify user interface components",
                     "techniques": [
                       {
-                        "id": "G195",
-                        "technology": "general",
-                        "title": "Using an author-supplied, visible focus indicator"
-                      },
-                      {
-                        "id": "G174",
-                        "technology": "general",
-                        "title": "Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast"
+                        "title": "Identifying user interface components",
+                        "suffix": "using the following techniques:",
+                        "using": [
+                          {
+                            "id": "G174",
+                            "technology": "general",
+                            "title": "Providing a control with a sufficient contrast ratio that allows users to switch to a presentation that uses sufficient contrast"
+                          }
+                        ]
                       }
                     ]
                   },
                   {
-                    "title": "Situation B: Color is required to understand graphical content",
+                    "title": "Situation B: Color is used to identify a user interface component's focus state",
                     "techniques": [
                       {
-                        "id": "G207",
-                        "technology": "general",
-                        "title": "Ensuring that a contrast ratio of 3:1 is provided for icons"
-                      },
+                        "title": "Identifying a user interface component's focus state",
+                        "suffix": "using the following techniques:",
+                        "using": [
+                          {
+                            "id": "G195",
+                            "technology": "general",
+                            "title": "Using an author-supplied, visible focus indicator"
+                          },
+                          {
+                            "id": "C40",
+                            "technology": "css",
+                            "title": "Creating a two-color focus indicator to ensure sufficient contrast with all components"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Situation C: Color is required to understand graphical content",
+                    "techniques": [
                       {
-                        "id": "G209",
-                        "technology": "general",
-                        "title": "Provide sufficient contrast at the boundaries between adjoining colors"
+                        "title": "Making graphical content understandable",
+                        "suffix": "using the following techniques:",
+                        "using": [
+                          {
+                            "id": "G207",
+                            "technology": "general",
+                            "title": "Ensuring that a contrast ratio of 3:1 is provided for icons"
+                          },
+                          {
+                            "id": "G209",
+                            "technology": "general",
+                            "title": "Provide sufficient contrast at the boundaries between adjoining colors"
+                          }
+                        ]
                       }
                     ]
                   }
@@ -6968,6 +6996,11 @@
                             "title": "Providing help by an assistant in the web page"
                           }
                         ]
+                      },
+                      {
+                        "id": "ARIA27",
+                        "technology": "aria",
+                        "title": "Using ariaNotify to convey the status of a progress bar"
                       }
                     ]
                   }

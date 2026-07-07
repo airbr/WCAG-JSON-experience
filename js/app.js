@@ -80,7 +80,7 @@ function choosePrinciple(index) {
         <strong>${data.principles[index].content}</strong>
         <p>Choose a Guideline:</p>
         <ul class="cluster">
-        <button class="button" data-button-variant="primary" onclick="getGuideline(${index}, ${false})">Get a Random Guideline</button>
+        <button class="button" data-button-radius="hard" data-button-variant="primary" onclick="getGuideline(${index}, ${false})">Get a Random Guideline</button>
         ${guidebuttonlist}
         </ul>
         `
