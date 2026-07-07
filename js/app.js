@@ -175,6 +175,16 @@ function getCriteria(num) {
                                     <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${tech.and[1].technology}/${tech.and[1].id}" data-button-variant="ghost" data-button-radius="hard">${tech.and[1].title}</a>
                                 </li>
                                 `;
+                            } else if (tech.using && !tech.technology) {
+                                for (const use of tech.using) {
+                                    sufficientbuttonlist += `
+                                <li>
+                                    <h3>${tech.title}, ${tech.suffix}</h3>
+                                </li>
+                                <li>
+                                <a class="button" href="https://www.w3.org/WAI/WCAG22/Techniques/${use.technology}/${use.id}" data-button-variant="ghost" data-button-radius="hard">${use.title}</a>
+                                </li>`;
+                                }
                             } else {
                                 if (tech.title && !tech.technology && !tech.id) {
                                 // Redundant
@@ -190,7 +200,7 @@ function getCriteria(num) {
                             for (const group of sufficient.groups) {
                                 sufficientbuttonlist += `
                             <li>
-                                <h2>${group.title}</h2>
+                                <h3>${group.title}</h3>
                             </li>`
                                 for (const grouptechniques of group.techniques) {
                                     sufficientbuttonlist +=

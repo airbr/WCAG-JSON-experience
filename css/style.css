@@ -51,6 +51,12 @@ h2 {
   font-size: var(--guideline-xp-1);
 }
 
+h3 {
+  margin-block: 0px;
+  color: #005a9c;
+  font-size: var(--guideline-xp-0);
+}
+
 p {
   font-size: var(--guideline-xp-0);
 }
