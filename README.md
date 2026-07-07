@@ -1,7 +1,5 @@
 # WCAG-JSON — Interactive WCAG learning experience
 
-> NOTE: Current website still under construction. Some techniques under success criteria do not populate. 01/13/2026
-
 WCAG-JSON is a small dependency-free html/css/js project meant to encourage hands-on learning of the Web Content Accessibility Guidelines (WCAG). It uses the Official JSON unaltered as the primary data source but is split into pieces in the app.
 
 The idea: embed the WCAG material as structured JSON and present it in an interactive, exploratory UI so people can learn guidelines, success criteria, failures, and techniques by starting from the beginning, browsing, and experimenting with the little app.
