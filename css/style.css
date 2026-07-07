@@ -272,7 +272,6 @@ h1 > a, h2 > a {
   --button-bg: transparent;
   --button-border-color: currentColor;
   --button-color: currentColor;
-  margin-block: 1em;
 }
 
 /* Radius variants */
