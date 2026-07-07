@@ -127,6 +127,10 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+h1 > a, h2 > a {
+  display: block;
+}
+
 .breadcrumb {
   background: whitesmoke;
   padding: 0 0.5rem;
@@ -150,9 +154,9 @@ textarea {
 
 
 *:focus-visible { 
-  outline: 4px solid #005a9c;
+  outline: 3px solid #005a9c;
 	outline-offset: 0.35rem;
-	border-radius: 0.125rem;
+	border-radius: 0.5em;
 }
     
 .button {
@@ -164,7 +168,7 @@ textarea {
   --button-border-style: solid;
   --button-border-color: var(--button-bg);
   --button-radius: 0.5em;
-  --button-outline-offset: .40rem;
+  --button-outline-offset: .35rem;
 
   display: inline-flex;
   align-items: center;
@@ -197,18 +201,17 @@ textarea {
 
 /* Hover/focus/active */
 .button:hover {
-  outline: 4px solid #005a9c;
+  outline: 3px solid #005a9c;
 	outline-offset: 0.35rem;
-	border-radius: 0.125rem;
+	border-radius: 0.5em;
   background: var(--button-hover-bg);
   color: var(--button-hover-color);
 }
 
 .button:focus {
-  outline: 4px solid #005a9c;
+  outline: 3px solid #005a9c;
 	outline-offset: 0.35rem;
-	border-radius: 0.125rem;
-  box-shadow: 0 0 0.2em #005a9c;
+	border-radius: 0.5em;
 }
 
 .button:active {
@@ -268,7 +271,8 @@ textarea {
 
 /* Radius variants */
 .button[data-button-radius="hard"] {
-  --button-radius: 0;
+  /* --button-radius: 0; */
+  /* Temporarily disabled */
 }
 
 /* List styles */
@@ -336,7 +340,7 @@ body {
 
 .header-cluster {
   justify-content: left;
-  --gutter: 8px;
+  --gutter: 16px;
 }
 
 .dropdown {
