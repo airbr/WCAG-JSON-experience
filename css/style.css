@@ -244,6 +244,14 @@ h1 > a, h2 > a {
   font-size: var(--button-font-size, .90em);
 }
 
+
+.button[data-button-variant="primary-principle"] {
+  --button-bg: #1d4ed8;
+  --button-color: #ffffff;
+  --button-hover-bg: #ffffff;
+  --button-hover-color: #1d4ed8;
+}
+
 .button[data-button-variant="random-header"] {
   --button-bg: #f3de8a;
   --button-color: #342a21;
@@ -327,6 +335,25 @@ Default: --gutter or var(--space-s-m).
   align-items: var(--cluster-vertical-alignment, center);
 }
 
+.index-cluster {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  padding-left: 0px;
+  flex-direction: var(--cluster-direction, row);
+  flex-wrap: var(--cluster-wrap, wrap);
+  column-gap: var(--cluster-column-gap, var(--gutter, var(--space-s-m)));
+  row-gap: var(--cluster-row-gap, var(--gutter, var(--space-s-m)));
+  justify-content: var(--cluster-horizontal-alignment, flex-start);
+  align-items: var(--cluster-vertical-alignment, center);
+}
+
+.index-cluster > * > * {
+  height: auto;
+  text-align: center;
+  font-size: var(--guideline-xp-1);
+}
+
 body {
   --gutter: 1em;
   font-family: sans-serif;
@@ -337,7 +364,7 @@ body {
   flex-direction: column;
 }
 
-.cluster {
+.cluster, .index-cluster {
   list-style-type: none;
   max-width: 80ch;
   margin: 0 auto;
