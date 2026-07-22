@@ -193,7 +193,6 @@ h1 > a, h2 > a {
   font-weight: var(--button-font-weight, 700);
   font-size: var(--button-font-size, 1em);
   letter-spacing: 0.05ch;
-  font-family: sans-serif;
   line-height: 1.1; /* Set or buttons will be different sizes (<a>/<button>) */
 
   cursor: pointer;
@@ -354,9 +353,21 @@ Default: --gutter or var(--space-s-m).
   font-size: var(--guideline-xp-1);
 }
 
+  @font-face {
+    font-family: 'atkinson';
+    src: url('/fonts/AtkinsonHyperlegibleNext-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  body {
+    margin: 0px;
+    font-family: atkinson, Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif; 
+  }
+
 body {
   --gutter: 1em;
-  font-family: sans-serif;
   background: whitesmoke;
   align-content: center;
   display: flex;
@@ -383,7 +394,6 @@ body {
 
 main {
   min-height: 30vh;
-  font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
   font-weight: normal;
   display: flex;
   flex-direction: column;
