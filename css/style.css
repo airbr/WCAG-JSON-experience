@@ -179,7 +179,7 @@ h1 > a, h2 > a {
   display: inline-flex;
   align-items: center;
   gap: var(--button-gap, 0.5em);
-  padding: var(--button-padding, 0.7em 1.2em);
+  padding: var(--button-padding, 0.6em 1.0em);
 
   background: var(--button-bg);
   color: var(--button-color);
@@ -432,7 +432,6 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #9abcde;
   color: white;
   padding: 20px;
   margin: 0px;
