@@ -411,7 +411,6 @@ main > #output {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 24px;
   margin-bottom: 48px;
   padding-bottom: 20px;
 }
